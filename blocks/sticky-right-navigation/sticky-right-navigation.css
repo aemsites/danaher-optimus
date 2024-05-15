@@ -27,7 +27,7 @@
     text-decoration: none;
 }
 
-@media (min-width: 1px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .sticky-right-navigation-wrapper {
         display: none;
     }
