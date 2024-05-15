@@ -12,7 +12,5 @@ export default function decorate(block) {
     liElement.appendChild(anchorElement);
     navLinksUl.appendChild(liElement);
   });
-  
   block.appendChild(navLinksUl);
 }
-
