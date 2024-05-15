@@ -1,19 +1,18 @@
 export default function decorate(block) {
-    const rightNavLinks = document.querySelectorAll('h2');
-    const navLinksUl = document.createElement('ul');
-    navLinksUl.classList.add("sticky-ul")
+  const rightNavLinks = document.querySelectorAll('h2');
+  const navLinksUl = document.createElement('ul');
+  navLinksUl.classList.add('sticky-ul');
+  rightNavLinks.forEach((rightNavLink) => {
+    const liElement = document.createElement('li');
+    const anchorElement = document.createElement('a');
 
-    rightNavLinks.forEach(rightNavLink => {
-        const liElement = document.createElement('li');
-        const anchorElement = document.createElement('a');
+    anchorElement.textContent = rightNavLink.textContent;
+    anchorElement.href = `#${rightNavLink.id}`;
 
-        anchorElement.textContent = rightNavLink.textContent;
-        anchorElement.href = `#${rightNavLink.id}`;
-
-        liElement.appendChild(anchorElement);
-        navLinksUl.appendChild(liElement);
-    });
-
-    block.appendChild(navLinksUl);
+    liElement.appendChild(anchorElement);
+    navLinksUl.appendChild(liElement);
+  });
+  
+  block.appendChild(navLinksUl);
 }
 
