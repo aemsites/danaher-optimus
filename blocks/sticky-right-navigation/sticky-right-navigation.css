@@ -27,11 +27,8 @@
     text-decoration: none;
 }
 
-/* eslint-disable */
-@media only screen and (max-width: 768px) {
+@media only screen and (width <= 768px) {
     .sticky-right-navigation-wrapper {
         display: none;
     }
 }
-
-/* eslint-enable */
