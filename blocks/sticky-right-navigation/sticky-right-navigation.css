@@ -27,7 +27,7 @@
     text-decoration: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) { /* eslint-disable-line */
     .sticky-right-navigation-wrapper {
         display: none;
     }
