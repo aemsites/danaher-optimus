@@ -44,17 +44,6 @@ async function loadFonts() {
   }
 }
 
-function capitalizeWords(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map((word) => {
-    if (word.length > 0) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return word;
-  });
-  return capitalizedWords.join(' ');
-}
-
 const TEMPLATE_LIST = [
   'home-page',
   'protocols',
@@ -65,7 +54,7 @@ async function decorateTemplates(main) {
   try {
     const template = toClassName(getMetadata('template'));
     if (TEMPLATE_LIST.includes(template)) {
-      const templateName = capitalizeWords(template);
+      const templateName = template;
       const mod = await import(`../templates/${templateName}/${templateName}.js`);
       loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
       if (mod.default) {
@@ -103,6 +92,17 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+}
+
+function capitalizeWords(str) {
+  const words = str.split(' ');
+  const capitalizedWords = words.map((word) => {
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+  return capitalizedWords.join(' ');
 }
 
 /**
