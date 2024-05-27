@@ -42,6 +42,29 @@ async function loadFonts() {
   }
 }
 
+const TEMPLATE_LIST = [
+  'default',
+  'product-category',
+  'home-page',
+];
+
+async function decorateTemplates(main) {
+  try {
+    const template = toClassName(getMetadata('template'));
+    if (TEMPLATE_LIST.includes(template)) {
+      const templateName = capitalizeWords(template);
+      const mod = await import(`../templates/${templateName}/${templateName}.js`);
+      loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
+      if (mod.default) {
+        await mod.default(main);
+      }
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Auto Blocking failed', error);
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -79,6 +102,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await decorateTemplates(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }

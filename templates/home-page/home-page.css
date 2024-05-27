@@ -1,0 +1,110 @@
+.absolute {
+  position: absolute
+}
+
+.relative {
+  position: relative
+}
+
+.inset-x-auto {
+  left: auto;
+  right: auto
+}
+
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.block {
+  display: block
+}
+
+.flex {
+  display: flex
+}
+
+.h-20 {
+  height: 5rem
+}
+
+.min-h-\[496px\] {
+  min-height: 496px
+}
+
+.w-full {
+  width: 100%
+}
+
+.flex-grow {
+  flex-grow: 1
+}
+
+.cursor-text {
+  cursor: text
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none
+}
+
+.items-center {
+  align-items: center
+}
+
+.justify-center {
+  justify-content: center
+}
+
+.rounded-full {
+  border-radius: 9999px
+}
+
+.border {
+  border-width: 1px
+}
+
+.border-solid {
+  border-style: solid
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity))
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1
+}
+
+.font-semibold {
+  font-weight: 600
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}

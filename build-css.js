@@ -31,6 +31,10 @@ const fileMappings = [
     output: './blocks/columns/columns.css',
     wrapper: 'columns-wrapper',
   },
+  {
+    content: './templates/home-page/home-page.js',
+    output: './templates/home-page/home-page.css',
+  },
 ];
 
 const watch = process.argv[2];
