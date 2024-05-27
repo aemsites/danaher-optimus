@@ -47,16 +47,16 @@ const fileMappings = [
     wrapper: 'timeline-steps-wrapper',
   },
   {
+    content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
+    output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
+  },
+  {
     content: './templates/protocols/protocols.js',
     output: './templates/protocols/protocols.css',
   },
   {
     content: './templates/home-page/home-page.js',
     output: './templates/home-page/home-page.css',
-  },
-  {
-    content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
-    output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
   },
 ];
 

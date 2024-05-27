@@ -1,4 +1,6 @@
-import { div, button, span, a, ul, li, h4 } from '../../scripts/dom-builder.js';
+import {
+  div, button, span, a, ul, li, h4,
+} from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function showFlyoutMenu() {
@@ -42,7 +44,6 @@ function toggleSearchBoxMobile(e) {
   if (!searchBox.classList.contains('show')) searchBox.querySelector('input').focus();
 }
 
-
 function buildFlyoutMenus(headerBlock) {
   const allFlyout = headerBlock.querySelectorAll('.menu-flyout');
   const closeFlyout = button({ class: 'flex ml-auto mx-2 p-1 rounded hover:bg-white' }, span({ class: 'icon icon-x w-6 h-6 [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }));
@@ -51,7 +52,7 @@ function buildFlyoutMenus(headerBlock) {
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-label="Close mobile menu">
     <path fill="#273F3F" fill-rule="evenodd" d="M4.293 19.707c.39.39 1.024.39 1.414 0L12 13.414l6.293 6.293c.39.39 1.024.39 1.414 0 .39-.39.39-1.024 0-1.414L13.414 12l6.293-6.293c.39-.39.39-1.024 0-1.414-.39-.39-1.024-.39-1.414 0L12 10.586 5.707 4.293c-.39-.39-1.024-.39-1.414 0-.39.39-.39 1.024 0 1.414L10.586 12l-6.293 6.293c-.39.39-.39 1.024 0 1.414z" clip-rule="evenodd"></path>
   </svg>
-  `
+  `;
   closeFlyout.addEventListener('click', hideFlyoutMenu);
 
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-arrow-left [&_svg>use]:stroke-danaherpurple-500 w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
@@ -113,7 +114,6 @@ function buildFlyoutMenus(headerBlock) {
   flyout.addEventListener('click', (event) => {
     if (event.target.id === 'menu-flyout') hideFlyoutMenu();
   });
-  console.log(flyout);
   return flyout;
 }
 
@@ -130,7 +130,7 @@ function buildSearchBlockMobile() {
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-label="Close mobile menu">
     <path fill="#273F3F" fill-rule="evenodd" d="M4.293 19.707c.39.39 1.024.39 1.414 0L12 13.414l6.293 6.293c.39.39 1.024.39 1.414 0 .39-.39.39-1.024 0-1.414L13.414 12l6.293-6.293c.39-.39.39-1.024 0-1.414-.39-.39-1.024-.39-1.414 0L12 10.586 5.707 4.293c-.39-.39-1.024-.39-1.414 0-.39.39-.39 1.024 0 1.414L10.586 12l-6.293 6.293c-.39.39-.39 1.024 0 1.414z" clip-rule="evenodd"></path>
   </svg>
-  `
+  `;
   return searchBlockMobile;
 }
 
@@ -138,11 +138,11 @@ function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
   searchHtmlBlock.classList.add(...'navbar-wrapper lg:h-[100px] bg-black z-50 py-2 md:py-4 lg:pt-8 lg:pb-2 mb-[2px] space-y-2 shadow-sm'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
-  //const searchHtmlBlockInner = div({ class: 'w-full flex flex-row flex-wrap justify-between' });
+  // const searchHtmlBlockInner = div({ class: 'w-full flex flex-row flex-wrap justify-between' });
   const searchNewBlock = div({ class: 'bg-black flex justify-between pr-4 mx-auto max-w-7xl flex-row lg:px-8' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full grid grid-rows-1 lg:grid-rows-2 ml-auto md:ml-14 mr-2 md:mr-4' });
   extendedSectionBlock.id = 'extended-section';
-  //searchHtmlBlockInner.innerHTML = headerBlock.children[1].innerHTML;
+  // searchHtmlBlockInner.innerHTML = headerBlock.children[1].innerHTML;
 
   const logoPictureBlock = searchHtmlBlock.querySelector(':scope > p > a');
   logoPictureBlock.innerHTML = `
@@ -171,7 +171,7 @@ function buildSearchBlock(headerBlock) {
 
   searchNewBlock.append(hamburgerIcon);
   searchNewBlock.append(logoPictureBlock);
-  //extendedSectionBlock.append(searchHtmlBlockInner);
+  // extendedSectionBlock.append(searchHtmlBlockInner);
   searchNewBlock.append(extendedSectionBlock);
   searchHtmlBlock.innerHTML = searchNewBlock.outerHTML;
 
@@ -195,16 +195,9 @@ function buildNavBlock(headerBlock) {
       });
     }
   });
-  console.log(menuLinks);
   const navHtmlBlock = div({ class: 'mega-menu-off-scroll hidden lg:flex items-center gap-x-4' });
 
-  // home link
-  //const homeLink = a({ class: 'hidden lg:flex text-danaherpurple-500 hover:text-danaherpurple-800 lifesciences-logo-link font-semibold', href: '/' }, 'Life Sciences');
-
-  // main nav
-  //navHtmlBlock.append(homeLink);
   menuLinks.forEach((item) => {
-    console.log(item);
     const menuItemName = item.innerText;
     const expandIcon = item.querySelector('span.icon-arrow-right');
     const menuItemEl = a(
@@ -226,7 +219,6 @@ function buildNavBlock(headerBlock) {
   });
   extendedSectionBlock.append(navHtmlBlock);
 }
-
 
 function handleScroll() {
   const stickyHeader = document.getElementById('sticky-header');
@@ -261,26 +253,22 @@ function handleScroll() {
 
 export default async function decorate(block) {
   const resp = await fetch('/nav.plain.html');
-  console.log(resp);
 
   if (resp.ok) {
     const html = await resp.text();
-    console.log(html);
 
     // build header DOM
     const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 bg-black relative z-20' });
     headerBlock.innerHTML = html;
-    console.log(headerBlock.innerHTML);
     buildSearchBlock(headerBlock);
     buildNavBlock(headerBlock);
-    
+
     const flyout = buildFlyoutMenus(headerBlock);
 
     window.addEventListener('scroll', handleScroll);
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
-
   }
 
   return block;

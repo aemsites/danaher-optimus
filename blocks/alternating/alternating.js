@@ -1,6 +1,4 @@
-import { div } from '../../scripts/dom-builder.js';
- 
-export default function decorate(block) {
+export default function decorate() {
   const main = document.querySelector('#main');
   const section = document.querySelectorAll('.alternating-wrapper');
   const wrapper = document.querySelector('.alternating');

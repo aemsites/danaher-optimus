@@ -5,7 +5,6 @@ export default function decorate(block) {
 
   [...block.children].forEach((row) => {
     const pictureTag = row.querySelector('picture');
-    const cardBody = document.createElement('div');
     const cardHeading = row.querySelector('h2');
     cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
@@ -40,5 +39,4 @@ export default function decorate(block) {
   });
   parentDiv.appendChild(ul);
   block.appendChild(parentDiv);
-  
 }
