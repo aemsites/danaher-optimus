@@ -4,7 +4,7 @@ export default function decorate(block) {
   const parentDiv = div({ class: 'cards-container' });
   const cardsUl = ul({ class: 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1' });
 
-  [...block.children].forEach(row => {
+  [...block.children].forEach((row) => {
     const pictureTag = row.querySelector('picture');
     const cardHeading = row.querySelector('h2');
     cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
