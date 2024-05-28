@@ -207,6 +207,11 @@
   row-gap: 0.5rem
 }
 
+.header-wrapper :is(.gap-x-8) {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem
+}
+
 .header-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -304,10 +309,6 @@
 
 .header-wrapper :is(.font-medium) {
   font-weight: 500
-}
-
-.header-wrapper :is(.font-semibold) {
-  font-weight: 600
 }
 
 .header-wrapper :is(.tracking-wider) {
@@ -506,6 +507,10 @@
 .header-wrapper :is(.\[\&_svg\>use\]\:bg-white svg>use) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.\[\&_svg\>use\]\:stroke-white svg>use) {
+  stroke: #fff
 }
 
 .header-wrapper :is(.\[\&_svg\>use\]\:stroke-2 svg>use) {
