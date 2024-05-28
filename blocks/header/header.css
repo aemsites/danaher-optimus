@@ -1,41 +1,3 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
-.header-wrapper :is(.collapse) {
-  visibility: collapse
-}
-
 .header-wrapper :is(.fixed) {
   position: fixed
 }
@@ -79,11 +41,6 @@
   margin-right: 1.5rem
 }
 
-.header-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .header-wrapper :is(.my-auto) {
   margin-top: auto;
   margin-bottom: auto
@@ -109,12 +66,12 @@
   margin-right: 0.5rem
 }
 
-.header-wrapper :is(.mt-0) {
-  margin-top: 0px
-}
-
 .header-wrapper :is(.mt-3) {
   margin-top: 0.75rem
+}
+
+.header-wrapper :is(.mt-5) {
+  margin-top: 1.25rem
 }
 
 .header-wrapper :is(.block) {
@@ -127,10 +84,6 @@
 
 .header-wrapper :is(.inline-flex) {
   display: inline-flex
-}
-
-.header-wrapper :is(.grid) {
-  display: grid
 }
 
 .header-wrapper :is(.hidden) {
@@ -147,10 +100,6 @@
 
 .header-wrapper :is(.h-6) {
   height: 1.5rem
-}
-
-.header-wrapper :is(.h-8) {
-  height: 2rem
 }
 
 .header-wrapper :is(.h-full) {
@@ -189,10 +138,6 @@
   max-width: 24rem
 }
 
-.header-wrapper :is(.shrink-0) {
-  flex-shrink: 0
-}
-
 .header-wrapper :is(.cursor-pointer) {
   cursor: pointer
 }
@@ -201,14 +146,6 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none
-}
-
-.header-wrapper :is(.resize) {
-  resize: both
-}
-
-.header-wrapper :is(.grid-rows-1) {
-  grid-template-rows: repeat(1, minmax(0, 1fr))
 }
 
 .header-wrapper :is(.flex-row) {
@@ -225,6 +162,10 @@
 
 .header-wrapper :is(.items-center) {
   align-items: center
+}
+
+.header-wrapper :is(.justify-center) {
+  justify-content: center
 }
 
 .header-wrapper :is(.justify-between) {
@@ -249,17 +190,6 @@
   row-gap: 0.5rem
 }
 
-.header-wrapper :is(.gap-x-8) {
-  -moz-column-gap: 2rem;
-       column-gap: 2rem
-}
-
-.header-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
-}
-
 .header-wrapper :is(.overflow-auto) {
   overflow: auto
 }
@@ -276,9 +206,17 @@
   border-bottom-width: 1px
 }
 
-.header-wrapper :is(.border-white) {
+.header-wrapper :is(.border-\[_var\(--tw-gradient-stops\)\]) {
+  border-color: var(--tw-gradient-stops)
+}
+
+.header-wrapper :is(.border-b-gray-400) {
   --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity))
+  border-bottom-color: rgb(156 163 175 / var(--tw-border-opacity))
+}
+
+.header-wrapper :is(.border-b-\[_var\(--tw-gradient-stops\)\]) {
+  border-bottom-color: var(--tw-gradient-stops)
 }
 
 .header-wrapper :is(.bg-black) {
@@ -286,13 +224,12 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+.header-wrapper :is(.bg-\[_var\(--tw-gradient-stops\)\]) {
+  background-color: var(--tw-gradient-stops)
 }
 
-.header-wrapper :is(.fill-current) {
-  fill: currentColor
+.header-wrapper :is(.bg-\[linear-gradient\(179\.05deg\2c _var\(--tw-gradient-stops\)\)\]) {
+  background-image: linear-gradient(179.05deg, var(--tw-gradient-stops))
 }
 
 .header-wrapper :is(.p-1) {
@@ -368,12 +305,6 @@
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
-.header-wrapper :is(.shadow-sm) {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-}
-
 .header-wrapper :is(.ring-0) {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -419,11 +350,6 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.hover\:bg-white:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
 .header-wrapper :is(.hover\:font-medium:hover) {
   font-weight: 500
 }
@@ -453,7 +379,17 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+@media (min-width: 640px) {
+  .header-wrapper :is(.sm\:ml-6) {
+    margin-left: 1.5rem
+  }
+}
+
 @media (min-width: 768px) {
+  .header-wrapper :is(.md\:ml-12) {
+    margin-left: 3rem
+  }
+
   .header-wrapper :is(.md\:ml-14) {
     margin-left: 3.5rem
   }
@@ -490,6 +426,10 @@
     margin-bottom: 1rem
   }
 
+  .header-wrapper :is(.lg\:ml-28) {
+    margin-left: 7rem
+  }
+
   .header-wrapper :is(.lg\:block) {
     display: block
   }
@@ -502,12 +442,8 @@
     display: none
   }
 
-  .header-wrapper :is(.lg\:h-\[100px\]) {
-    height: 100px
-  }
-
-  .header-wrapper :is(.lg\:grid-rows-2) {
-    grid-template-rows: repeat(2, minmax(0, 1fr))
+  .header-wrapper :is(.lg\:h-\[80px\]) {
+    height: 80px
   }
 
   @media (min-width: 1024px) {
@@ -520,17 +456,8 @@
     }
   }
 
-  .header-wrapper :is(.lg\:px-8) {
-    padding-left: 2rem;
-    padding-right: 2rem
-  }
-
   .header-wrapper :is(.lg\:\!pb-4) {
     padding-bottom: 1rem !important
-  }
-
-  .header-wrapper :is(.lg\:pb-2) {
-    padding-bottom: 0.5rem
   }
 
   .header-wrapper :is(.lg\:pt-8) {
@@ -546,21 +473,17 @@
   font-weight: 700
 }
 
+.header-wrapper :is(.\[\&_img\]\:items-center img) {
+  align-items: center
+}
+
 .header-wrapper :is(.\[\&_svg\>use\]\:bg-white svg>use) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.\[\&_svg\>use\]\:stroke-white svg>use) {
-  stroke: #fff
-}
-
 .header-wrapper :is(.\[\&_svg\>use\]\:stroke-2 svg>use) {
   stroke-width: 2
-}
-
-.header-wrapper :is(.\[\&_svg\>use\]\:hover\:stroke-black:hover svg>use) {
-  stroke: #000
 }
 
 .header-wrapper :is(.\[\&_svg\]\:stroke-white svg) {

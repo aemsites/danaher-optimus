@@ -1,5 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { div, h1 } from '../../scripts/dom-builder.js';
+import { div, h1, h3 } from '../../scripts/dom-builder.js';
 
 function setSidebarMaxHeight() {
   let height = 0;
@@ -47,10 +47,14 @@ export default function buildAutoBlocks(block) {
   const main = div({ id: 'content', class: 'flex xl:ml-[9.25%] mr-[5.25%] lg:mx-[6.25%] md:mx-[5.25%] sm:mx-[4.25%]' });
 
   const mainContainer = div({ class: 'xl:ml-[7.5%] mb-10' });
-  const sidebarContainer = div({ class: 'lg:mr-[-8%] md:mr-[-2%] md:min-w-[360px]' });
+  const sidebarContainer = div({ class: 'relative lg:mr-[-8%] md:mr-[-2%] md:min-w-[360px]' });
   const sideNavWrapper = div({ class: 'flex flex-col h-full mx-[30.5%] lgd:hidden lgu:visible' });
 
-  const sidebar = div({ id: 'sidebar', class: 'fixed mt-4' });
+  const sidebar = div({ id: 'sidebar', class: 'sticky top-4 mt-4' });
+  if (sidebar.querySelector('[data-block-name^="sticky-right-navigation"]')) {
+    const sectionheading = h3({class: 'px-3.5 py-3 text-gray-400 text-sm'}, 'SECTIONS');
+    sidebar.appendChild(sectionheading);
+  }
 
   // Iterate over each section
   contentBlocks.forEach((blocks) => {
@@ -72,7 +76,8 @@ export default function buildAutoBlocks(block) {
   main.appendChild(sidebarContainer);
   outerElement.appendChild(main);
   if (!sidebar.children.length > 0) {
-    mainContainer.className = 'w-full m-auto mx-[15%] mb-16 bg-white text-black-0 max-w-7xl';
+    main.className = 'm-auto mx-[15%] mb-16 bg-white text-black-0';
+    mainContainer.className = 'w-full';
   }
   content.appendChild(outerElement);
   defaultTemplate.appendChild(content);

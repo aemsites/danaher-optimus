@@ -498,6 +498,7 @@ video {
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
+  --tw-gradient-stops: linear-gradient(179.05deg, #4BA6B3 3.35%, #C9D3B7 36.82%, #FF8730 70.29%, #C54428 99.27%);
 }
 
 ::backdrop {

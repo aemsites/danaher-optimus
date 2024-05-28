@@ -1,5 +1,13 @@
-.fixed {
-  position: fixed
+.relative {
+  position: relative
+}
+
+.sticky {
+  position: sticky
+}
+
+.top-4 {
+  top: 1rem
 }
 
 .m-auto {
@@ -70,10 +78,6 @@
   width: 100%
 }
 
-.max-w-7xl {
-  max-width: 80rem
-}
-
 .max-w-screen-xl {
   max-width: 1280px
 }
@@ -113,6 +117,21 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
 .font-sans {
   font-family: sanchez
 }
@@ -127,6 +146,11 @@
   line-height: 1.5rem
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
@@ -138,6 +162,11 @@
 
 .tracking-normal {
   letter-spacing: 0em
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
 @media (min-width: 640px) {
