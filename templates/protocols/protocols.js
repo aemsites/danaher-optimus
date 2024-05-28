@@ -51,7 +51,7 @@ export default function buildAutoBlocks(block) {
   const sideNavWrapper = div({ class: 'flex flex-col h-full mx-[30.5%] lgd:hidden lgu:visible' });
 
   const sidebar = div({ id: 'sidebar', class: 'sticky top-4 mt-4' });
-  if (sidebar.querySelector('[data-block-name^="sticky-right-navigation"]')) {
+  if (sidebar.querySelectorAll('.sticky-right-navigation')) {
     const sectionheading = h3({ class: 'px-3.5 py-3 text-gray-400 text-sm' }, 'SECTIONS');
     sidebar.appendChild(sectionheading);
   }
