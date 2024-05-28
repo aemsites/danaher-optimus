@@ -43,7 +43,7 @@ function buildSearchBlock(headerBlock) {
   const searchNewBlock = div({ class: 'bg-black flex gap-x-4 lg:ml-28 md:ml-12 sm:ml-6 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
   extendedSectionBlock.id = 'extended-section';
-  const logoPictureBlock = a({class: ''});
+  const logoPictureBlock = a({ class: '' });
   const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
   if (window.location.pathname === '/') logoPictureBlock.href = 'https://www.abcam.com/en-in';
 
@@ -88,7 +88,6 @@ function buildNavBlock(headerBlock) {
 
   menuLinks.forEach((item) => {
     const menuItemName = item.innerText;
-    const expandIcon = item.querySelector('span.icon-chevron-up-white');
     const menuItemEl = a(
       {
         class: 'btn flex relative bg-black hover:bg-black text-white font-medium ring-0 border-0 ring-offset-0 group',
@@ -110,9 +109,10 @@ function buildNavBlock(headerBlock) {
 
 function buildFlyoutMenus(headerBlock) {
   const allFlyout = headerBlock.querySelectorAll('.menu-flyout');
-  const closeFlyout = button({ class: 'flex mx-2 mt-5 p-1 gap-x-4 rounded' }, 
-  span({ class: 'icon icon-close w-6 h-6 [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
-  span({ class: 'icon icon-logo [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
+  const closeFlyout = button(
+    { class: 'flex mx-2 mt-5 p-1 gap-x-4 rounded' },
+    span({ class: 'icon icon-close w-6 h-6 [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
+    span({ class: 'icon icon-logo [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
   );
   closeFlyout.addEventListener('click', hideFlyoutMenu);
 
@@ -146,7 +146,6 @@ function buildFlyoutMenus(headerBlock) {
         },
       );
       if (document.querySelector('span.icon')) {
-        console.log('span');
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
         liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
@@ -227,7 +226,7 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
-    const borderBottom = div({class: 'mb-[2px] border-b border-b-[_var(--tw-gradient-stops)]'});
+    const borderBottom = div({ class: 'mb-[2px] border-b border-b-[_var(--tw-gradient-stops)]' });
     block.append(borderBottom);
   }
 

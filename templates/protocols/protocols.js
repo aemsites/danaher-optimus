@@ -52,7 +52,7 @@ export default function buildAutoBlocks(block) {
 
   const sidebar = div({ id: 'sidebar', class: 'sticky top-4 mt-4' });
   if (sidebar.querySelector('[data-block-name^="sticky-right-navigation"]')) {
-    const sectionheading = h3({class: 'px-3.5 py-3 text-gray-400 text-sm'}, 'SECTIONS');
+    const sectionheading = h3({ class: 'px-3.5 py-3 text-gray-400 text-sm' }, 'SECTIONS');
     sidebar.appendChild(sectionheading);
   }
 
