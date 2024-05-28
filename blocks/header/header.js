@@ -143,9 +143,8 @@ function buildSearchBlock(headerBlock) {
   const extendedSectionBlock = div({ class: 'extended-section md:w-full grid grid-rows-1 lg:grid-rows-2 ml-auto md:ml-14 mr-2 md:mr-4' });
   extendedSectionBlock.id = 'extended-section';
   // searchHtmlBlockInner.innerHTML = headerBlock.children[1].innerHTML;
-  console.log(searchHtmlBlock);
   const logoPictureBlock = searchHtmlBlock.querySelector(':scope > p > a');
-  const logoPictureBlockIcon = span({class: 'icon icon-logo'});
+  const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
   if (window.location.pathname === '/') logoPictureBlock.href = 'https://www.abcam.com/en-in';
 
   const hamburgerIcon = button(
@@ -158,7 +157,7 @@ function buildSearchBlock(headerBlock) {
       'aria-controls': 'mega-menu-icons',
       'data-collapse-toggle': 'mega-menu-icons',
     },
-    span({ class: 'icon icon-nav-hamburger'}),
+    span({ class: 'icon icon-nav-hamburger' }),
   );
 
   searchNewBlock.append(hamburgerIcon);
@@ -202,7 +201,7 @@ function buildNavBlock(headerBlock) {
       },
       menuItemName,
     );
-    const arrowDownIcon = span({class: 'icon icon-chevron-up-white'});
+    const arrowDownIcon = span({ class: 'icon icon-chevron-up-white' });
     menuItemEl.append(arrowDownIcon);
     decorateIcons(menuItemEl);
     if (expandIcon) {
@@ -213,7 +212,7 @@ function buildNavBlock(headerBlock) {
         sortFlyoutMenus(`Menu|${menuItemName}`);
       });
     }
-   // decorateIcons(expandIcon);
+    // decorateIcons(expandIcon);
 
     navHtmlBlock.append(menuItemEl);
   });
