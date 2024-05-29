@@ -40,7 +40,7 @@ function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
   searchHtmlBlock.classList.add(...'navbar-wrapper justify-center lg:h-[80px] bg-black z-50 py-2 md:py-4 lg:pt-8'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
-  const searchNewBlock = div({ class: 'bg-black flex gap-x-4 lg:ml-28 md:ml-12 sm:ml-6 pr-4 max-w-7xl flex-row' });
+  const searchNewBlock = div({ class: 'bg-black flex gap-x-4 mx-auto lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a({ class: '' });
@@ -226,7 +226,7 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
-    const borderBottom = div({ class: 'mb-[2px] border-b border-b-[_var(--tw-gradient-stops)]' });
+    const borderBottom = div({ class: 'h-0.5', style:'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
     block.append(borderBottom);
   }
 

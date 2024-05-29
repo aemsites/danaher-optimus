@@ -563,6 +563,10 @@
     grid-column: span 3 / span 3
   }
 
+  .hero-wrapper :is(.lg\:block) {
+    display: block
+  }
+
   .hero-wrapper :is(.lg\:grid-cols-4) {
     grid-template-columns: repeat(4, minmax(0, 1fr))
   }

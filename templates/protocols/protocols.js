@@ -50,7 +50,7 @@ export default function buildAutoBlocks(block) {
   const sidebarContainer = div({ class: 'relative lg:mr-[-8%] md:mr-[-2%] md:min-w-[360px]' });
   const sideNavWrapper = div({ class: 'flex flex-col h-full mx-[30.5%] lgd:hidden lgu:visible' });
 
-  const sidebar = div({ id: 'sidebar', class: 'sticky top-4 mt-4' });
+  const sidebar = div({ id: 'sidebar', class: 'sticky top-28 mt-4' });
   /*if (sidebar.querySelectorAll('.sticky-right-navigation')) {
     const sectionheading = h3({ class: 'px-3.5 py-3 text-gray-400 text-sm' }, 'SECTIONS');
     sidebar.appendChild(sectionheading);

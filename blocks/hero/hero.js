@@ -7,7 +7,7 @@ export default function decorate(block) {
   const pictureTag = block.querySelector('picture');
   const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl' });
   const headingTag = block.querySelector('h1');
-  headingTag.classList.add(...'font-semibold text-white'.split(' '));
+  headingTag.classList.add(...'font-semibold text-white hidden lg:block'.split(' '));
   parentWrapper.append(headingTag);
   block.classList.add('relative');
   block.innerHTML = '';
