@@ -1,5 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { div, h1, h3 } from '../../scripts/dom-builder.js';
+import { div, h1 } from '../../scripts/dom-builder.js';
 
 function setSidebarMaxHeight() {
   let height = 0;
@@ -51,10 +51,6 @@ export default function buildAutoBlocks(block) {
   const sideNavWrapper = div({ class: 'flex flex-col h-full mx-[30.5%] lgd:hidden lgu:visible' });
 
   const sidebar = div({ id: 'sidebar', class: 'sticky top-28 mt-4' });
-  /*if (sidebar.querySelectorAll('.sticky-right-navigation')) {
-    const sectionheading = h3({ class: 'px-3.5 py-3 text-gray-400 text-sm' }, 'SECTIONS');
-    sidebar.appendChild(sectionheading);
-  }*/
 
   // Iterate over each section
   contentBlocks.forEach((blocks) => {

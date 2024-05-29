@@ -226,7 +226,7 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
-    const borderBottom = div({ class: 'h-0.5', style:'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
+    const borderBottom = div({ class: 'h-0.5', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
     block.append(borderBottom);
   }
 
