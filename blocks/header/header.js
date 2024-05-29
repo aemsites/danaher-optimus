@@ -112,14 +112,14 @@ function buildFlyoutMenus(headerBlock) {
   const closeFlyout = button(
     { class: 'flex mx-2 mt-5 p-1 gap-x-4 rounded' },
     span({ class: 'icon icon-close w-6 h-6 [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
-    span({ class: 'icon icon-logo [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
+    span({ class: 'icon icon-logo' }),
   );
   closeFlyout.addEventListener('click', hideFlyoutMenu);
 
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
   backFlyout.addEventListener('click', () => sortFlyoutMenus(backFlyout.getAttribute('data-redirect')));
 
-  const exploreFlyout = a({ id: 'explore-flyout', class: 'flex items-center gap-x-1 group', href: '#' }, 'Explore all', span({ class: 'icon icon-chevron-right-orange w-4 h-4 transition-transform group-hover:-translate-x-0.5' }));
+  const exploreFlyout = a({ id: 'explore-flyout', class: 'flex items-center gap-x-1 group', href: '/' }, 'Explore all', span({ class: 'icon icon-chevron-right-orange w-4 h-4 transition-transform group-hover:-translate-x-0.5' }));
 
   const navigateActions = div(
     { class: 'flex justify-between mt-5 text-base text-white font-bold mx-2' },
@@ -135,7 +135,6 @@ function buildFlyoutMenus(headerBlock) {
   [...allFlyout].forEach((flyMenu) => {
     const contentText = flyMenu.children[0]?.textContent;
     const anchorHref = flyMenu.children[1].querySelector('a')?.href;
-
     [...flyMenu.children[1].children].map((flyMenuChild) => {
       const contextPath = `${contentText}|${flyMenuChild.textContent}`;
       const liTag = li(
@@ -145,7 +144,7 @@ function buildFlyoutMenus(headerBlock) {
           ...(anchorHref && { 'data-href': anchorHref }),
         },
       );
-      if (document.querySelector('span.icon')) {
+      if (headerBlock.querySelector('span.icon')) {
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
         liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
