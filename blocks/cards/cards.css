@@ -133,6 +133,10 @@
 }
 
 @media (max-width: 799px) {
+  .cards-wrapper :is(.max-\[799px\]\:w-full) {
+    width: 100%
+  }
+
   .cards-wrapper :is(.max-\[799px\]\:grid-cols-1) {
     grid-template-columns: repeat(1, minmax(0, 1fr))
   }
