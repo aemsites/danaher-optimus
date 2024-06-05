@@ -18,7 +18,7 @@ export default function breadcrumb() {
     breadcrumbLiLinks.appendChild(breadcrumbLinks);
   }
   const breadcrumNav = nav(
-    { class: 'relative z-10 flex max-w-max flex-1 items-center justify-center' },
+    { class: 'relative z-10 flex max-w-max flex-1 items-center' },
     div({ style: 'position:relative' }, ul(breadcrumbLiLinks)),
   );
   return breadcrumNav;
