@@ -55,6 +55,10 @@ const fileMappings = [
     output: './templates/protocols/protocols.css',
   },
   {
+    content: './blocks/breadcrumb/breadcrumb.js',
+    output: './blocks/breadcrumb/breadcrumb.css',
+  },
+  {
     content: './templates/product-category/product-category.js',
     output: './templates/product-category/product-category.css',
   },
