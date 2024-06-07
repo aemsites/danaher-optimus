@@ -15,7 +15,7 @@ export default function breadcrumb() {
     let link = i === length - 1 ? title : path[i].charAt(0).toUpperCase() + path[i].slice(1);
     link = link.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
     if (i !== 0) link = ` / ${link}`;
-    breadcrumbLinks = a({ class: 'group underline inline-flex h-10 w-max items-center justify-center rounded-md bg-background py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50', href: url }, (`${link}`));
+    breadcrumbLinks = a({ class: 'breadcrumb-wrapper underline inline-flex h-10 w-max items-center justify-center rounded-md bg-background py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50', href: url }, (`${link}`));
     breadcrumbLiLinks.appendChild(breadcrumbLinks);
   }
   const breadcrumNav = nav(

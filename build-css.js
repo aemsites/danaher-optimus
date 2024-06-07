@@ -57,6 +57,7 @@ const fileMappings = [
   {
     content: './blocks/breadcrumb/breadcrumb.js',
     output: './blocks/breadcrumb/breadcrumb.css',
+    wrapper: 'breadcrumb-wrapper',
   },
   {
     content: './templates/product-category/product-category.js',
