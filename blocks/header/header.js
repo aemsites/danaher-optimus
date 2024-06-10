@@ -47,8 +47,7 @@ function buildSearchBlock(headerBlock) {
   const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
   if (window.location.pathname === '/') {
     logoPictureBlock.href = window.location.href;
-  }
-  else {
+  } else {
     logoPictureBlock.href = 'https://main--danaher-optimus--aemsites.hlx.page/';
   }
 
