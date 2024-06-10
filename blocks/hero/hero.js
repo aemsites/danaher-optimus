@@ -5,10 +5,10 @@ import {
 
 export default function decorate(block) {
   const pictureTag = block.querySelector('picture');
-  pictureTag.classList.add(...'[&_img]:h-96 md:[&_img]:h-full'.split(' '));
+  pictureTag.classList.add(...'[&_img]:h-96 md:[&_img]:h-full [&_img]:w-full'.split(' '));
   const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
   const headingTag = block.querySelector('h1');
-  headingTag.classList.add(...'hidden md:block font-semibold text-white'.split(' '));
+  headingTag.classList.add(...'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white'.split(' '));
   parentWrapper.append(headingTag);
   block.classList.add(...'relative'.split(' '));
   block.innerHTML = '';

@@ -40,12 +40,17 @@ function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
   searchHtmlBlock.classList.add(...'navbar-wrapper justify-center lg:h-[80px] bg-black z-50 py-2 md:py-4 lg:pt-8'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
-  const searchNewBlock = div({ class: 'bg-black flex gap-x-4 mx-auto lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
+  const searchNewBlock = div({ class: 'bg-black flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a({ class: '' });
   const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
-  if (window.location.pathname === '/') logoPictureBlock.href = window.location.href;
+  if (window.location.pathname === '/') {
+    logoPictureBlock.href = window.location.href;
+  }
+  else {
+    logoPictureBlock.href = 'https://main--danaher-optimus--aemsites.hlx.page/';
+  }
 
   const hamburgerIcon = button(
     {
