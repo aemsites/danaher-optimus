@@ -96,10 +96,6 @@
   margin-bottom: auto
 }
 
-.hero-wrapper :is(.mb-0) {
-  margin-bottom: 0px
-}
-
 .hero-wrapper :is(.mb-3) {
   margin-bottom: 0.75rem
 }
@@ -110,10 +106,6 @@
 
 .hero-wrapper :is(.ml-2) {
   margin-left: 0.5rem
-}
-
-.hero-wrapper :is(.ml-28) {
-  margin-left: 7rem
 }
 
 .hero-wrapper :is(.ms-2) {
@@ -160,9 +152,8 @@
   height: 1.5rem
 }
 
-.hero-wrapper :is(.h-max) {
-  height: -moz-max-content;
-  height: max-content
+.hero-wrapper :is(.h-7) {
+  height: 1.75rem
 }
 
 .hero-wrapper :is(.h-screen) {
@@ -177,8 +168,8 @@
   width: 1.5rem
 }
 
-.hero-wrapper :is(.w-96) {
-  width: 24rem
+.hero-wrapper :is(.w-7) {
+  width: 1.75rem
 }
 
 .hero-wrapper :is(.w-auto) {
@@ -284,21 +275,21 @@
   overflow-y: scroll
 }
 
-.hero-wrapper :is(.rounded) {
-  border-radius: 0.25rem
-}
-
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
+}
+
+.hero-wrapper :is(.rounded-none) {
+  border-radius: 0px
 }
 
 .hero-wrapper :is(.border-b) {
   border-bottom-width: 1px
 }
 
-.hero-wrapper :is(.bg-\[\#F5EFFF\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 239 255 / var(--tw-bg-opacity))
+.hero-wrapper :is(.border-cyan-600) {
+  --tw-border-opacity: 1;
+  border-color: rgb(8 145 178 / var(--tw-border-opacity))
 }
 
 .hero-wrapper :is(.bg-black) {
@@ -315,6 +306,20 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.hero-wrapper :is(.bg-gradient-to-bl) {
+  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
+}
+
+.hero-wrapper :is(.from-black) {
+  --tw-gradient-from: #000 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.hero-wrapper :is(.to-gray-800) {
+  --tw-gradient-to: #1f2937 var(--tw-gradient-to-position)
+}
+
 .hero-wrapper :is(.fill-current) {
   fill: currentColor
 }
@@ -327,14 +332,19 @@
   padding: 0.75rem
 }
 
+.hero-wrapper :is(.px-0) {
+  padding-left: 0px;
+  padding-right: 0px
+}
+
 .hero-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
 }
 
-.hero-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
+.hero-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
 .hero-wrapper :is(.px-8) {
@@ -355,6 +365,11 @@
 .hero-wrapper :is(.py-3) {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
+}
+
+.hero-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .hero-wrapper :is(.pl-2) {
@@ -410,10 +425,6 @@
   font-weight: 600
 }
 
-.hero-wrapper :is(.tracking-wide) {
-  letter-spacing: 0.025em
-}
-
 .hero-wrapper :is(.tracking-wider) {
   letter-spacing: 0.05em
 }
@@ -423,13 +434,13 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.hero-wrapper :is(.text-black\/70) {
-  color: rgb(0 0 0 / 0.7)
-}
-
 .hero-wrapper :is(.text-gray-400) {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.text-gray-600\/70) {
+  color: rgb(75 85 99 / 0.7)
 }
 
 .hero-wrapper :is(.text-white) {
@@ -484,16 +495,8 @@
     grid-column: span 3 / span 3
   }
 
-  .hero-wrapper :is(.md\:mb-4) {
-    margin-bottom: 1rem
-  }
-
   .hero-wrapper :is(.md\:me-1) {
     margin-inline-end: 0.25rem
-  }
-
-  .hero-wrapper :is(.md\:ms-1) {
-    margin-inline-start: 0.25rem
   }
 
   .hero-wrapper :is(.md\:block) {
@@ -504,12 +507,16 @@
     display: flex
   }
 
-  .hero-wrapper :is(.md\:h-3\/5) {
-    height: 60%
+  .hero-wrapper :is(.md\:inline-flex) {
+    display: inline-flex
   }
 
-  .hero-wrapper :is(.md\:w-10) {
-    width: 2.5rem
+  .hero-wrapper :is(.md\:hidden) {
+    display: none
+  }
+
+  .hero-wrapper :is(.md\:h-3\/5) {
+    height: 60%
   }
 
   .hero-wrapper :is(.md\:grid-cols-3) {
@@ -518,6 +525,15 @@
 
   .hero-wrapper :is(.md\:flex-row) {
     flex-direction: row
+  }
+
+  .hero-wrapper :is(.md\:rounded-full) {
+    border-radius: 9999px
+  }
+
+  .hero-wrapper :is(.md\:border-white) {
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity))
   }
 
   .hero-wrapper :is(.md\:p-0) {
@@ -541,11 +557,6 @@
   .hero-wrapper :is(.md\:text-3xl) {
     font-size: 1.875rem;
     line-height: 2.25rem
-  }
-
-  .hero-wrapper :is(.md\:text-5xl) {
-    font-size: 3rem;
-    line-height: 1
   }
 
   .hero-wrapper :is(.md\:text-7xl) {
@@ -583,6 +594,16 @@
 
 .hero-wrapper :is(.\[\&_\#search-product\]\:hidden #search-product) {
   display: none
+}
+
+.hero-wrapper :is(.\[\&_img\]\:h-96 img) {
+  height: 24rem
+}
+
+@media (min-width: 768px) {
+  .hero-wrapper :is(.md\:\[\&_img\]\:h-full img) {
+    height: 100%
+  }
 }
 
 .hero-wrapper :is(.\[\&_p\]\:leading-4 p) {

@@ -18,6 +18,14 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
+ * It will used generate random number to use in ID
+ * @returns 4 digit random numbers
+ */
+export function generateUUID() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
@@ -30,6 +38,18 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
+}
+
+// Change to first letter  is Capital in each word
+function capitalizeWords(str) {
+  const words = str.split(' ');
+  const capitalizedWords = words.map((word) => {
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+  return capitalizedWords.join(' ');
 }
 
 /**
@@ -115,7 +135,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
-	await decorateTemplates(main);
+	  await decorateTemplates(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }
@@ -130,6 +150,25 @@ async function loadEager(doc) {
   }
 }
 
+// Changes date format from excel general format to date
+export function formatDateRange(date) {
+  const options = {
+    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+  };
+  const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
+  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
+  return formattedStartDate;
+}
+
+// Changes date format from Unix Epoch to date
+export function formatDate(date) {
+  const options = {
+    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+  };
+  const startDate = new Date(Number(date) * 1000).toUTCString();
+  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
+  return formattedStartDate;
+}
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element

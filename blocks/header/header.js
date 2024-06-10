@@ -45,7 +45,7 @@ function buildSearchBlock(headerBlock) {
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a({ class: '' });
   const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
-  if (window.location.pathname === '/') logoPictureBlock.href = 'https://www.abcam.com/en-in';
+  if (window.location.pathname === '/') logoPictureBlock.href = window.location.href;
 
   const hamburgerIcon = button(
     {
@@ -95,7 +95,7 @@ function buildNavBlock(headerBlock) {
       },
       menuItemName,
     );
-    const arrowDownIcon = span({ class: 'icon icon-chevron-up-white flex transition group-hover:rotate-180 ml-1 [&_img]:items-center' });
+    const arrowDownIcon = span({ class: 'icon icon-chevron-down flex transition group-hover:rotate-180 ml-1 [&_img]:items-center' });
     menuItemEl.append(arrowDownIcon);
     menuItemEl.addEventListener('click', (e) => {
       e.preventDefault();
