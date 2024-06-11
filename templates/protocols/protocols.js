@@ -57,10 +57,10 @@ export default function buildAutoBlocks(block) {
   // Iterate over each section
   contentBlocks.forEach((blocks) => {
     // Handling sidebars within each section
-    // const h2 = blocks.querySelector('h2');
-    // h2.classList.add(...'mt-12 mb-8 font-light text-4xl'.split(' '));
     const sidebars = blocks.querySelectorAll('[data-block-name^="sticky-right-navigation"]');
     if (sidebars.length > 0) {
+      const h2 = blocks.querySelector('h2');
+      h2.classList.add(...'mt-12 mb-8 font-light text-4xl'.split(' '));
       sidebars.forEach((sidebarItem) => {
         sidebar.appendChild(sidebarItem); // Clone to keep the original in place
       });
