@@ -80,3 +80,7 @@
 .breadcrumbs-wrapper :is(.disabled\:opacity-50:disabled) {
   opacity: 0.5
 }
+
+.breadcrumbs a {
+  text-decoration: underline;
+}
