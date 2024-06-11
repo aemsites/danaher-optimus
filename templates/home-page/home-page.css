@@ -2,21 +2,12 @@
   margin: auto
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .mt-\[72px\] {
   margin-top: 72px
 }
 
 .block {
   display: block
-}
-
-.w-4\/5 {
-  width: 80%
 }
 
 .w-11\/12 {
@@ -27,12 +18,6 @@
   padding-bottom: 66px
 }
 
-@media (min-width: 768px) {
-  .md\:w-11\/12 {
-    width: 91.666667%
-  }
-}
-
 @media (min-width: 1024px) {
   .lg\:w-\[95\%\] {
     width: 95%
@@ -40,14 +25,6 @@
 }
 
 @media (min-width: 1280px) {
-  .xl\:w-4\/5 {
-    width: 80%
-  }
-
-  .xl\:w-\[82\%\] {
-    width: 82%
-  }
-
   .xl\:w-\[81\%\] {
     width: 81%
   }

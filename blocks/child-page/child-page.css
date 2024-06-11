@@ -1,62 +1,62 @@
-.childpage-wrapper :is(.my-2) {
+.child-page-wrapper :is(.my-2) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
 }
 
-.childpage-wrapper :is(.my-6) {
+.child-page-wrapper :is(.my-6) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem
 }
 
-.childpage-wrapper :is(.mb-1) {
+.child-page-wrapper :is(.mb-1) {
   margin-bottom: 0.25rem
 }
 
-.childpage-wrapper :is(.block) {
+.child-page-wrapper :is(.block) {
   display: block
 }
 
-.childpage-wrapper :is(.flex) {
+.child-page-wrapper :is(.flex) {
   display: flex
 }
 
-.childpage-wrapper :is(.pt-8) {
+.child-page-wrapper :is(.pt-8) {
   padding-top: 2rem
 }
 
-.childpage-wrapper :is(.text-lg) {
+.child-page-wrapper :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem
 }
 
-.childpage-wrapper :is(.text-sm) {
+.child-page-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
 }
 
-.childpage-wrapper :is(.font-medium) {
+.child-page-wrapper :is(.font-medium) {
   font-weight: 500
 }
 
-.childpage-wrapper :is(.text-black) {
+.child-page-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.childpage-wrapper :is(.text-cyan-700) {
+.child-page-wrapper :is(.text-cyan-700) {
   --tw-text-opacity: 1;
   color: rgb(14 116 144 / var(--tw-text-opacity))
 }
 
-.childpage-wrapper :is(.text-gray-400) {
+.child-page-wrapper :is(.text-gray-400) {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
-.childpage-wrapper :is(.filter) {
+.child-page-wrapper :is(.filter) {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
-.childpage-wrapper :is(.hover\:underline:hover) {
+.child-page-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
 }

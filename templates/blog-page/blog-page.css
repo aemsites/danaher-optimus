@@ -7,12 +7,12 @@
   margin-bottom: 1.25rem
 }
 
-.mb-8 {
-  margin-bottom: 2rem
-}
-
 .mb-2 {
   margin-bottom: 0.5rem
+}
+
+.mb-8 {
+  margin-bottom: 2rem
 }
 
 .block {
@@ -68,26 +68,12 @@
   line-height: 1.75rem
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1
-}
-
 .font-light {
   font-weight: 300
 }
 
 .font-semibold {
   font-weight: 600
-}
-
-.font-bold {
-  font-weight: 700
 }
 
 .tracking-normal {
