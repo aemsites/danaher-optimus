@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { div, h1 } from '../../scripts/dom-builder.js';
-import breadcrumb from '../../blocks/breadcrumb/breadcrumbs.js';
+import breadcrumb from '../../blocks/breadcrumbs/breadcrumbs.js';
 
 function setSidebarMaxHeight() {
   let height = 0;
