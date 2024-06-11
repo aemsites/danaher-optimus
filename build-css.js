@@ -78,9 +78,9 @@ const fileMappings = [
     wrapper: 'alert-banner-wrapper',
   },
   {
-    content: './blocks/childPage/childPage.js',
-    output: './blocks/childPage/childPage.css',
-    wrapper: 'childpage-wrapper',
+    content: './blocks/child-page/child-page.js',
+    output: './blocks/child-page/child-page.css',
+    wrapper: 'child-page-wrapper',
   },
   {
     content: './blocks/separator/separator.js',
