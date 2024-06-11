@@ -64,6 +64,10 @@ const fileMappings = [
     output: './templates/product-category/product-category.css',
   },
   {
+    content: './templates/blog-page/blog-page.js',
+    output: './templates/blog-page/blog-page.css',
+  },
+  {
     content: './blocks/mini-teasers/mini-teasers.js',
     output: './blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
@@ -72,6 +76,16 @@ const fileMappings = [
     content: './blocks/alert-banner/alert-banner.js',
     output: './blocks/alert-banner/alert-banner.css',
     wrapper: 'alert-banner-wrapper',
+  },
+  {
+    content: './blocks/childPage/childPage.js',
+    output: './blocks/childPage/childPage.css',
+    wrapper: 'childpage-wrapper',
+  },
+  {
+    content: './blocks/separator/separator.js',
+    output: './blocks/separator/separator.css',
+    wrapper: 'separator-wrapper',
   },
 ];
 

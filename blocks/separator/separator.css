@@ -1,0 +1,61 @@
+.separator-wrapper :is(.\!block) {
+  display: block !important
+}
+
+.separator-wrapper :is(.block) {
+  display: block
+}
+
+.separator-wrapper :is(.table) {
+  display: table
+}
+
+.separator-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.separator-wrapper :is(.table-auto) {
+  table-layout: auto
+}
+
+.separator-wrapper :is(.table-fixed) {
+  table-layout: fixed
+}
+
+.separator-wrapper :is(.content-baseline) {
+  align-content: baseline
+}
+
+.separator-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
+.separator-wrapper :is(.border-b-2) {
+  border-bottom-width: 2px
+}
+
+.separator-wrapper :is(.border-\[\#e5e7eb\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity))
+}
+
+.separator-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.separator-wrapper :is(.pb-1) {
+  padding-bottom: 0.25rem
+}
+
+.separator-wrapper :is(.pr-2) {
+  padding-right: 0.5rem
+}
+
+.separator-wrapper :is(.pt-2) {
+  padding-top: 0.5rem
+}
+
+.separator-wrapper :is(.text-left) {
+  text-align: left
+}

@@ -13,7 +13,7 @@ export default function decorate() {
           row.querySelector('h2')?.classList.add(...'title mb-6 text-4xl font-bold text-heading-large font-header'.split(' '));
           row.querySelectorAll('p')?.forEach((p) => {
             if (p.className.includes('button-container')) {
-              p.querySelector('a')?.classList.add(...'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2 w-16 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]'.split(' '));
+              p.querySelector('a')?.classList.add(...'rounded-3xl text-white text-xs justify-center px-5 font-semibold py-3 w-16 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]'.split(' '));
             } else {
               p.classList.add(...'description text-lg mb-8 font-normal'.split(' '));
             }

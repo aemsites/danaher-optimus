@@ -47,6 +47,10 @@
   border-radius: 1rem
 }
 
+.alternating-wrapper :is(.rounded-3xl) {
+  border-radius: 1.5rem
+}
+
 .alternating-wrapper :is(.bg-\[\#378189\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(55 129 137 / var(--tw-bg-opacity))
@@ -104,6 +108,16 @@
 .alternating-wrapper :is(.py-\[72px\]) {
   padding-top: 72px;
   padding-bottom: 72px
+}
+
+.alternating-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
+.alternating-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
 }
 
 .alternating-wrapper :is(.text-4xl) {

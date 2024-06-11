@@ -56,6 +56,7 @@ const TEMPLATE_LIST = [
   'home-page',
   'protocols',
   'product-category',
+  'blog-page',
 ];
 
 async function decorateTemplates(main) {
@@ -151,11 +152,13 @@ export function formatDateRange(date) {
 // Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
-    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
   };
-  const startDate = new Date(Number(date) * 1000).toUTCString();
-  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  return formattedStartDate;
+  const lastModifiedDate = new Date(Number(date) * 1000);
+  console.log(lastModifiedDate);
+  const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
+  const formatDate = formattedDate.replace(/,/g, '');
+  return formatDate;
 }
 /**
  * Loads everything that doesn't need to be delayed.
