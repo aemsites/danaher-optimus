@@ -275,6 +275,10 @@
   overflow-y: scroll
 }
 
+.hero-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
@@ -614,6 +618,14 @@
 
 .hero-wrapper :is(.\[\&_img\]\:h-96 img) {
   height: 24rem
+}
+
+.hero-wrapper :is(.\[\&_img\]\:h-\[496px\] img) {
+  height: 496px
+}
+
+.hero-wrapper :is(.\[\&_img\]\:min-h-\[496px\] img) {
+  min-height: 496px
 }
 
 .hero-wrapper :is(.\[\&_img\]\:w-full img) {
