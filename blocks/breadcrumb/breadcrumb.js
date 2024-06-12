@@ -7,7 +7,7 @@ export default function breadcrumb() {
   const path = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
   const navigation = getMetadata('navigation');
-  if(navigation !== 'false' || navigation === null){
+  if (navigation !== 'false' || navigation === null) {
     const { length } = path;
     const breadcrumbLiLinks = li();
     let url = '';
@@ -25,5 +25,5 @@ export default function breadcrumb() {
       div({ style: 'position:relative' }, ul(breadcrumbLiLinks)),
     );
     return breadcrumNav;
-  } else return '';
+  } return '';
 }
