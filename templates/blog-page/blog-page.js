@@ -22,9 +22,7 @@ export default function buildAutoBlocks(block) {
 
   contentBlocks.forEach((blocks) => {
     const h2 = blocks.querySelector('h2');
-    const picture = blocks.querySelector('picture > img');
     h2.classList.add(...'mb-2 text-xl'.split(' '));
-    picture.classList.add('w-full');
     content.appendChild(blocks);
     blocks.style.display = null;
   });
