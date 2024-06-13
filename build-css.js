@@ -83,9 +83,9 @@ const fileMappings = [
     wrapper: 'child-page-wrapper',
   },
   {
-    content: './blocks/separator/separator.js',
-    output: './blocks/separator/separator.css',
-    wrapper: 'separator-wrapper',
+    content: './blocks/table-block/table-block.js',
+    output: './blocks/table-block/table-block.css',
+    wrapper: 'table-block-wrapper',
   },
   {
     content: './blocks/breadcrumb/breadcrumb.js',
