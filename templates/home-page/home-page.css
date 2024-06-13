@@ -10,32 +10,10 @@
   display: block
 }
 
-.w-11\/12 {
-  width: 91.666667%
-}
-
 .w-4\/5 {
   width: 80%
 }
 
 .pb-\[66px\] {
   padding-bottom: 66px
-}
-
-@media (min-width: 1024px) {
-  .lg\:w-\[95\%\] {
-    width: 95%
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:w-\[81\%\] {
-    width: 81%
-  }
-}
-
-@media (min-width: 1536px) {
-  .\32xl\:w-\[45\%\] {
-    width: 45%
-  }
 }
