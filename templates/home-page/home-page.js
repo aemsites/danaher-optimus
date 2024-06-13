@@ -10,7 +10,7 @@ export default function buildAutoBlocks(block) {
   const content = div({ id: 'main' });
 
   // Creating outer element
-  const outerElement = div({ class: 'w-11/12 lg:w-[95%] xl:w-[81%] 2xl:w-[45%] m-auto' });
+  const outerElement = div({ class: 'w-4/5 m-auto' });
 
   // Creating main and sidebar elements
   const main = div({ class: 'mt-[72px] pb-[66px]' });
