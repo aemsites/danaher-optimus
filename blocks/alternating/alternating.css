@@ -19,12 +19,12 @@
   width: 4rem
 }
 
-.alternating-wrapper :is(.w-full) {
-  width: 100%
+.alternating-wrapper :is(.w-\[87\%\]) {
+  width: 87%
 }
 
-.alternating-wrapper :is(.max-w-\[1120px\]) {
-  max-width: 1120px
+.alternating-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .alternating-wrapper :is(.basis-1\/2) {
@@ -43,8 +43,8 @@
   align-self: center
 }
 
-.alternating-wrapper :is(.rounded-3xl) {
-  border-radius: 1.5rem
+.alternating-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
 }
 
 .alternating-wrapper :is(.bg-\[\#378189\]) {
@@ -81,9 +81,9 @@
   padding-right: 2.5rem
 }
 
-.alternating-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
+.alternating-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
 }
 
 .alternating-wrapper :is(.px-\[30px\]) {
@@ -96,9 +96,9 @@
   padding-bottom: 4rem
 }
 
-.alternating-wrapper :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
+.alternating-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
 }
 
 .alternating-wrapper :is(.py-\[72px\]) {
@@ -157,6 +157,12 @@
 
 @media (max-width: 799px) {
   .alternating-wrapper :is(.max-\[799px\]\:w-full) {
+    width: 100%
+  }
+}
+
+@media (max-width: 768px) {
+  .alternating-wrapper :is(.max-\[768px\]\:w-full) {
     width: 100%
   }
 }

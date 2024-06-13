@@ -99,7 +99,7 @@ function buildNavBlock(headerBlock) {
       },
       menuItemName,
     );
-    const arrowDownIcon = span({ class: 'icon icon-chevron-down flex transition group-hover:rotate-180 ml-1 [&_img]:items-center' });
+    const arrowDownIcon = span({ class: 'icon icon-chevron-down-white flex transition group-hover:rotate-180 ml-1 [&_img]:items-center' });
     menuItemEl.append(arrowDownIcon);
     menuItemEl.addEventListener('click', (e) => {
       e.preventDefault();

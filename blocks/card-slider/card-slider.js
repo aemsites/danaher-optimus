@@ -54,8 +54,8 @@ function createAnniversaryBlogs(posts) {
 }
 
 function createSliderNavigation() {
-  const prevButton = div({ class: 'slider-button prev bg-gray-100 text-black p-2 rounded-full mx-2' }, '<');
-  const nextButton = div({ class: 'slider-button next bg-gray-100 text-black p-2 rounded-full mx-2' }, '>');
+  const prevButton = div({ class: 'slider-button prev bg-gray-100 text-black p-2 w-10 pl-3.5 rounded-full mx-2' }, '<');
+  const nextButton = div({ class: 'slider-button next bg-gray-100 text-black p-2  w-10 pl-3.5 rounded-full mx-2' }, '>');
   return { prevButton, nextButton };
 }
 
@@ -96,7 +96,7 @@ function createHeroComponent(post) {
     a({
       href: post.path,
       title: post.title,
-    }, div({ class: 'w-full object-cover' }, createOptimizedPicture(post.image, post.title))),
+    }, div({ class: '[&_img]:hover:scale-125 ease-in duration-150 object-cover' }, createOptimizedPicture(post.image, post.title))),
   );
   hero.querySelector('picture > img')?.classList.add('w-full');
   const textContainer = div({ class: 'text-center' });
