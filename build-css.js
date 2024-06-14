@@ -64,6 +64,10 @@ const fileMappings = [
     output: './templates/product-category/product-category.css',
   },
   {
+    content: './templates/blog-page/blog-page.js',
+    output: './templates/blog-page/blog-page.css',
+  },
+  {
     content: './blocks/mini-teasers/mini-teasers.js',
     output: './blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
@@ -74,9 +78,24 @@ const fileMappings = [
     wrapper: 'alert-banner-wrapper',
   },
   {
+    content: './blocks/child-page/child-page.js',
+    output: './blocks/child-page/child-page.css',
+    wrapper: 'child-page-wrapper',
+  },
+  {
     content: './blocks/table-block/table-block.js',
     output: './blocks/table-block/table-block.css',
     wrapper: 'table-block-wrapper',
+  },
+  {
+    content: './blocks/breadcrumb/breadcrumb.js',
+    output: './blocks/breadcrumb/breadcrumb.css',
+    wrapper: 'breadcrumb-wrapper',
+  },
+  {
+    content: './blocks/card-slider/card-slider.js',
+    output: './blocks/card-slider/card-slider.css',
+    wrapper: 'card-slider-wrapper',
   },
 ];
 

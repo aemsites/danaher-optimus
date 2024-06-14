@@ -98,7 +98,7 @@ function createFooterDOM(mainContainer) {
     [...ceneterElements.children].forEach((liEle) => {
       const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
       linkDiv.append(liEle.querySelector('strong'));
-      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down' });
+      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white' });
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
       liEle.prepend(linkDiv);

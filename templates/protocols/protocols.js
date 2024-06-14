@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { div, h1 } from '../../scripts/dom-builder.js';
+import breadcrumb from '../../blocks/breadcrumb/breadcrumb.js';
 
 function setSidebarMaxHeight() {
   let height = 0;
@@ -32,6 +33,7 @@ export default function buildAutoBlocks(block) {
     { class: 'border border-b-slate-400 mb-10' },
     div(
       { class: 'w-3/4 m-auto my-12 font-sans text-base flex flex-col justify-center' },
+      breadcrumb(),
       h1({ class: 'my-5 text-black-0 text-6xl font-semibold tracking-normal' }, title),
       div({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }),
       div({ class: 'text-xl tracking-normal' }, description),
@@ -57,6 +59,8 @@ export default function buildAutoBlocks(block) {
     // Handling sidebars within each section
     const sidebars = blocks.querySelectorAll('[data-block-name^="sticky-right-navigation"]');
     if (sidebars.length > 0) {
+      const h2 = blocks.querySelector('h2');
+      h2.classList.add(...'mt-12 mb-8 font-light text-4xl'.split(' '));
       sidebars.forEach((sidebarItem) => {
         sidebar.appendChild(sidebarItem); // Clone to keep the original in place
       });
@@ -74,6 +78,16 @@ export default function buildAutoBlocks(block) {
   if (!sidebar.children.length > 0) {
     main.className = 'm-auto 2xl:mx-80 xl:mx-44 lg:mx-32 md:mx-24 mx-12 mb-16 bg-white text-black-0';
     mainContainer.className = 'w-full';
+    main.querySelector('h2')?.classList.add(...'my-6 text-2xl'.split(' '));
+    main.querySelectorAll('ul')?.forEach((ulEle) => {
+      ulEle.classList.add('mt-6');
+      if (ulEle.nextElementSibling?.nodeName === 'P') {
+        ulEle.nextElementSibling.classList.add('-mt-2.5');
+      }
+      ulEle.querySelectorAll('li')?.forEach((liEle) => {
+        liEle.classList.add(...'my-2 text-[#378189] text-lg leading-6'.split(' '));
+      });
+    });
   }
   content.appendChild(outerElement);
   defaultTemplate.appendChild(content);

@@ -24,7 +24,9 @@ export default function decorate(block) {
   productCategoryWrapper.appendChild(descriptionWrapper);
   sectionBlocks.appendChild(productCategoryWrapper);
   if (sectionBlocks) {
-    const section = sectionBlocks.querySelector('.alert-banner-wrapper' || '.product-list-wrapper');
-    descriptionWrapper.appendChild(section);
+    const sections = sectionBlocks.querySelectorAll('.alert-banner-wrapper, .product-list-wrapper, .childpage-wrapper');
+    sections.forEach((section) => {
+      descriptionWrapper.append(section);
+    });
   } else block.appendChild(container);
 }
