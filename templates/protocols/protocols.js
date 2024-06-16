@@ -30,13 +30,13 @@ export default function buildAutoBlocks(block) {
   const description = getMetadata('og:description');
 
   const headTitle = div(
-    { class: 'border border-b-slate-400 mb-10' },
+    { class: 'border border-b-slate-400 mb-10 mt-20' },
     div(
-      { class: 'w-3/4 m-auto my-12 font-sans text-base flex flex-col justify-center' },
+      { class: 'w-3/4 m-auto my-12 font-sans text-base flex flex-col justify-center max-[768px]:mx-4' },
       breadcrumb(),
-      h1({ class: 'my-5 text-black-0 text-6xl font-semibold tracking-normal' }, title),
+      h1({ class: 'my-5 text-black-0 text-6xl font-semibold tracking-normal max-[640px]:text-base' }, title),
       div({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }),
-      div({ class: 'text-xl tracking-normal' }, description),
+      div({ class: 'text-xl tracking-normal max-[640px]:text-base' }, description),
     ),
   );
 
@@ -46,10 +46,10 @@ export default function buildAutoBlocks(block) {
   const outerElement = div({ class: 'm-auto bg-white text-black-0 max-w-screen-7xl' });
 
   // Creating main and sidebar elements
-  const main = div({ id: 'content', class: 'flex 2xl:mx-80 xl:mx-44 lg:mx-32 md:mx-24 mx-12' });
+  const main = div({ id: 'content', class: 'flex w-3/4 m-auto max-[768px]:w-full max-[768px]:mx-4' });
 
   const mainContainer = div({ class: 'mb-10' });
-  const sidebarContainer = div({ class: 'relative lg:mr-[-8%]' });
+  const sidebarContainer = div({ class: 'relative lg:mr-[-5%]' });
   const sideNavWrapper = div({ class: 'flex flex-col h-full mx-[30.5%] lgd:hidden lgu:visible' });
 
   const sidebar = div({ id: 'sidebar', class: 'sticky top-32 mt-4' });
@@ -76,7 +76,7 @@ export default function buildAutoBlocks(block) {
   main.appendChild(sidebarContainer);
   outerElement.appendChild(main);
   if (!sidebar.children.length > 0) {
-    main.className = 'm-auto 2xl:mx-80 xl:mx-44 lg:mx-32 md:mx-24 mx-12 mb-16 bg-white text-black-0';
+    main.className = 'm-auto w-3/4 mb-16 bg-white text-black-0 max-[768px]:w-full max-[768px]:mx-4';
     mainContainer.className = 'w-full';
     main.querySelector('h2')?.classList.add(...'my-6 text-2xl'.split(' '));
     main.querySelectorAll('ul')?.forEach((ulEle) => {
