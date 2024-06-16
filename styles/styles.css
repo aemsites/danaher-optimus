@@ -438,7 +438,6 @@ img,
 video {
   max-width: 100%;
   height: auto;
-  aspect-ratio: auto;
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
@@ -603,6 +602,18 @@ video {
 
 .table {
   display: table;
+}
+
+.aspect-auto {
+  aspect-ratio: auto;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .filter {
