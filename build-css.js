@@ -88,6 +88,11 @@ const fileMappings = [
     wrapper: 'table-block-wrapper',
   },
   {
+    content: './blocks/title-card/title-card.js',
+    output: './blocks/title-card/title-card.css',
+    wrapper: 'title-card-wrapper',
+  },
+  {
     content: './blocks/breadcrumb/breadcrumb.js',
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',

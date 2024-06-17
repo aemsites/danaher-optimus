@@ -1,0 +1,43 @@
+.title-card-wrapper :is(.my-5) {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem
+}
+
+.title-card-wrapper :is(.mb-5) {
+  margin-bottom: 1.25rem
+}
+
+.title-card-wrapper :is(.block) {
+  display: block
+}
+
+.title-card-wrapper :is(.w-1\/6) {
+  width: 16.666667%
+}
+
+.title-card-wrapper :is(.border-t-4) {
+  border-top-width: 4px
+}
+
+.title-card-wrapper :is(.border-\[\#ff7223\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.title-card-wrapper :is(.text-6xl) {
+  font-size: 3.75rem;
+  line-height: 1
+}
+
+.title-card-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.title-card-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.title-card-wrapper :is(.tracking-normal) {
+  letter-spacing: 0em
+}

@@ -3,7 +3,7 @@ import {
   div, nav, ul, li, a,
 } from '../../scripts/dom-builder.js';
 // breadcrumb functionality implementation
-export default function breadcrumb() {
+export default function decorate(block) {
   const path = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
   const navigation = getMetadata('navigation');
@@ -24,6 +24,6 @@ export default function breadcrumb() {
       { class: 'breadcrumb-wrapper relative z-10 flex max-w-max flex-1 items-center' },
       div({ style: 'position:relative' }, ul(breadcrumbLiLinks)),
     );
-    return breadcrumNav;
-  } return '';
+    block.appendChild(breadcrumNav);
+  }
 }
