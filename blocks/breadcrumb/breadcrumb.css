@@ -62,6 +62,10 @@
   font-weight: 500
 }
 
+.breadcrumb-wrapper :is(.leading-5) {
+  line-height: 1.25rem
+}
+
 .breadcrumb-wrapper :is(.underline) {
   text-decoration-line: underline
 }

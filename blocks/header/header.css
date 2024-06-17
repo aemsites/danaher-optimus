@@ -410,10 +410,6 @@
     display: none
   }
 
-  .header-wrapper :is(.lg\:h-\[80px\]) {
-    height: 80px
-  }
-
   @media (min-width: 1024px) {
     .header-wrapper :is(.lg\:lg\:grid-rows-1) {
       grid-template-rows: repeat(1, minmax(0, 1fr))

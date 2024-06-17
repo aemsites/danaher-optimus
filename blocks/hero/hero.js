@@ -5,6 +5,8 @@ import {
 
 export default function decorate(block) {
   const pictureTag = block.querySelector('picture');
+  const img = pictureTag.querySelector('img');
+  img.setAttribute('loading', 'eager');
   pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
   const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
   const headingTag = block.querySelector('h1');
@@ -33,7 +35,7 @@ export default function decorate(block) {
                 class: 'icon icon-search hidden md:block bg-transparent text-white absolute flex ms-2 p-1 md:p-0 inset-y-0 start-0 w-7 h-7 my-auto [&_svg]:fill-current cursor-pointer',
               }),
               span({
-                class: 'icon icon-chevron-left block md:hidden bg-transparent text-white absolute flex ms-2 p-1 md:p-0 inset-y-0 start-0 w-7 h-7 my-auto [&_svg]:fill-current cursor-pointer',
+                class: 'icon icon-chevron-left-orange block md:hidden bg-transparent text-white absolute flex ms-2 p-1 md:p-0 inset-y-0 start-0 w-7 h-7 my-auto [&_svg]:fill-current cursor-pointer',
                 onclick: () => {
                   const searchContainer = document.querySelector('#search-container');
                   if (searchContainer) searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
@@ -89,7 +91,7 @@ export default function decorate(block) {
             a(
               { class: 'flex items-center text-base text-black' },
               'Discover the all new CellXpress.ai Automated Cell Culture System',
-              span({ class: 'icon icon-arrow-right flex items-center [&_svg]:w-4 [&_svg]:h-4 [&_svg]:stroke-1 [&_svg]:text-danaherpurple-500 ml-2' }),
+              span({ class: 'icon icon-chevron-right-orange flex items-center [&_svg]:w-4 [&_svg]:h-4 [&_svg]:stroke-1 [&_svg]:text-danaherpurple-500 ml-2' }),
             ),
           ),
           div(

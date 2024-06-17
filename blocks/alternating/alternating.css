@@ -105,6 +105,11 @@
   padding-bottom: 0.5rem
 }
 
+.alternating-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
+}
+
 .alternating-wrapper :is(.py-\[72px\]) {
   padding-top: 72px;
   padding-bottom: 72px

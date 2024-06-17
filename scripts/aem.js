@@ -463,10 +463,11 @@ function decorateIcon(span, prefix = '', alt = '') {
     .find((c) => c.startsWith('icon-'))
     .substring(5);
   const img = document.createElement('img');
+  img.classList.add('aspect-auto');
   img.dataset.iconName = iconName;
   img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
   img.alt = alt;
-  img.loading = 'lazy';
+  img.loading = 'eager';
   span.append(img);
 }
 
