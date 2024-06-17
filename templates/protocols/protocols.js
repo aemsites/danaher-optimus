@@ -2,12 +2,11 @@ import { buildBlock } from "../../scripts/aem.js";
 
 export default async function buildAutoBlocks() {
   const container = document.querySelector('main div');
-
+  container.classList.add(...'border border-b-slate-400 mb-10'.split(' '));
   const titleBlock = buildBlock('title-card', { elems: []});
-  // titleBlock.classList.add('block');
-  // titleBlock.dataset.blockName = 'title-card';
+  const breadcrumbBlock = buildBlock('breadcrumb', { elems: []});
 
   container.append(
-    titleBlock,
+    breadcrumbBlock, titleBlock,
   )
 }
