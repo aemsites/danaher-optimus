@@ -360,3 +360,8 @@
 .accordion-wrapper :is(.peer:checked ~ .peer-checked\:opacity-100) {
   opacity: 1
 }
+
+.accordion-wrapper :is(.peer:checked ~ .\[\&_\.open-close-icon\]\:peer-checked\:rotate-0 .open-close-icon) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
