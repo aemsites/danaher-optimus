@@ -1,6 +1,6 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
-
+ 
 /**
  * Adding Hyperlinks to social icons. Links which are authored in the sharepoint
  * @param {Element} socialIcons Authored content from the Document
@@ -17,7 +17,7 @@ function callSocialIcons(socialIcons) {
   }
   return allAnchorTags;
 }
-
+ 
 // Adding classes to the footer links
 function addClassesToListItems(element, depth) {
   for (let i = 0; i < element.length; i += 1) {
@@ -31,7 +31,7 @@ function addClassesToListItems(element, depth) {
     }
   }
 }
-
+ 
 // Show hide in responsive for footer links
 function showHideFooterLinks(footerLinks) {
   footerLinks.addEventListener('click', (event) => {
@@ -44,29 +44,29 @@ function showHideFooterLinks(footerLinks) {
     }
   });
 }
-
+ 
 /**
  * Create Footer DOM Structure
  * @param {Element} mainContainer Authored content from the Document
  */
 function createFooterDOM(mainContainer) {
   const firstChild = mainContainer.firstElementChild;
-
+ 
   const topContainer = div({ class: 'flex items-end justify-between' });
   const logoContainer = div({ class: 'logo-container' });
   const socialIconsContainer = div({ class: 'social-icons-container' });
-
+ 
   const middleContainer = div({ class: 'middle-container' });
   const footerLinks = div({ class: 'footer-links' });
-
+ 
   const bottomContainer = div({ class: 'flex justify-between text-link-small' });
   const danaharLogoContainer = div({ class: 'shrink-0 h-[84px] w-[72px]' });
-
+ 
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
   const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end font-light space-x-5 opacity-90' });
-
+ 
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
-
+ 
   const logo = firstChild.firstElementChild;
   const socialIcons = callSocialIcons(firstChild.children[1]);
   const links = firstChild.children[2];
@@ -78,13 +78,13 @@ function createFooterDOM(mainContainer) {
     });
   });
   const rights = firstChild.children[5];
-
+ 
   logoContainer.appendChild(logo);
   socialIconsContainer.appendChild(socialIcons);
   topContainer.appendChild(logoContainer);
-
+ 
   topContainer.appendChild(socialIconsContainer);
-
+ 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
   const ceneterElements = middleContainer.firstElementChild.firstElementChild;
@@ -114,7 +114,7 @@ function createFooterDOM(mainContainer) {
   bottomLeftContainer.appendChild(rightsContainer);
   bottomContainer.appendChild(danaharLogoContainer);
   bottomContainer.appendChild(bottomLeftContainer);
-
+ 
   mainContainer.appendChild(topContainer);
   mainContainer.appendChild(div({ class: 'my-8 border-t border-white opacity-50 lg:my-7' }));
   mainContainer.appendChild(middleContainer);
@@ -123,7 +123,7 @@ function createFooterDOM(mainContainer) {
   mainContainer.firstElementChild.remove();
   return mainContainer;
 }
-
+ 
 /**
  * loads and decorates the footer
  * @param {Element} block The footer block element
@@ -133,10 +133,10 @@ export default async function decorate(block) {
   const cfg = readBlockConfig(block);
   const footerPath = cfg.footer || '/footer';
   const response = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
-
+ 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col max-w-7xl mx-auto lg:px-8 md:px-12 px-4' });
+    const mainContainer = div({ class: 'flex flex-col max-w-7xl mx-auto lg:px-8 md:px-12 px-4 w-[84%] max-[767px]:w-full' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
