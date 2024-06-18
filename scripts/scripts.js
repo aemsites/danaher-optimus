@@ -14,6 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
+import { div } from './dom-builder.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -90,6 +91,26 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Decorates the sticky right navigation block from main element.
+ * @param {Element} main The main element
+ */
+function decorateStickyRightNav(main){
+  const stickySection = main.querySelector('div.sticky-right-navigation-container');
+  if(stickySection){
+    const divEl = div();
+    stickySection.classList.add('flex', 'w-3/4', 'm-auto');
+    const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
+    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4');
+    [...stickySection.children].forEach((child, index, childs) => {
+      if(index !== childs.length - 1){
+        divEl.append(child);
+      }
+    });
+    stickySection.prepend(divEl);
+  }
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -101,6 +122,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateStickyRightNav(main);
 }
 
 function capitalizeWords(str) {
@@ -123,8 +145,9 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    await decorateTemplates(main);
     decorateMain(main);
-	  await decorateTemplates(main);
+	  
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }
