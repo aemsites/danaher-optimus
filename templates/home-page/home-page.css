@@ -6,12 +6,29 @@
   margin-top: 72px
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem
+}
+
+.mb-8 {
+  margin-bottom: 2rem
+}
+
 .block {
   display: block
 }
 
 .w-4\/5 {
   width: 80%
+}
+
+.border {
+  border-width: 1px
+}
+
+.border-b-slate-400 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
 }
 
 .pb-\[66px\] {

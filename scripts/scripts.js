@@ -98,7 +98,7 @@ function decorateStickyRightNav(main){
   const stickySection = main.querySelector('div.sticky-right-navigation-container');
   if(stickySection){
     const divEl = div();
-    stickySection.classList.add('flex', 'w-3/4', 'm-auto');
+    stickySection.classList.add('flex');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
     stricyBlock?.classList.add('sticky', 'top-32', 'mt-4');
     [...stickySection.children].forEach((child, index, childs) => {

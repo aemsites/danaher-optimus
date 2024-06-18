@@ -2,18 +2,21 @@
   margin: auto
 }
 
-.title-card-wrapper :is(.my-12) {
-  margin-top: 3rem;
-  margin-bottom: 3rem
-}
-
 .title-card-wrapper :is(.my-5) {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem
 }
 
+.title-card-wrapper :is(.mb-12) {
+  margin-bottom: 3rem
+}
+
 .title-card-wrapper :is(.mb-5) {
   margin-bottom: 1.25rem
+}
+
+.title-card-wrapper :is(.mt-4) {
+  margin-top: 1rem
 }
 
 .title-card-wrapper :is(.block) {
@@ -28,8 +31,8 @@
   width: 16.666667%
 }
 
-.title-card-wrapper :is(.w-3\/4) {
-  width: 75%
+.title-card-wrapper :is(.w-4\/5) {
+  width: 80%
 }
 
 .title-card-wrapper :is(.flex-col) {

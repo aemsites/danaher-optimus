@@ -10,6 +10,6 @@ export default function decorate(block) {
     div({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }),
     div({ class: 'text-xl tracking-normal' }, description),
   );
-  block.classList.add(...'w-3/4 m-auto my-12 font-sans text-base flex flex-col justify-center'.split(' '));
+  block.classList.add(...'w-4/5 m-auto mt-4 mb-12 font-sans text-base flex flex-col justify-center'.split(' '));
   block.append(headTitle);
 }
