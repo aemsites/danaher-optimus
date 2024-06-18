@@ -596,10 +596,6 @@ video {
   top: 8rem;
 }
 
-.m-auto {
-  margin: auto;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
@@ -624,8 +620,13 @@ video {
   aspect-ratio: auto;
 }
 
-.w-3\/4 {
-  width: 75%;
+.default-content-wrapper p {
+  margin-bottom: 1rem;
+}
+
+.default-content-wrapper ul > li > strong > a {
+  margin-bottom: 1rem;
+  color: rgb(55 129 137);
 }
 
 .filter {
