@@ -588,6 +588,22 @@ video {
   }
 }
 
+.sticky {
+  position: sticky;
+}
+
+.top-32 {
+  top: 8rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .block {
   display: block;
 }
@@ -606,6 +622,10 @@ video {
 
 .aspect-auto {
   aspect-ratio: auto;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .filter {
