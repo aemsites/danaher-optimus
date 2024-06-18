@@ -4,7 +4,6 @@ import { div } from '../../scripts/dom-builder.js';
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const sections = main.querySelectorAll('div');
-  console.log(sections);
   sections.forEach((section) => {
     section.classList.add('w-4/5', 'm-auto', 'mb-8');
   });
