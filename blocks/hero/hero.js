@@ -504,10 +504,12 @@ function buildSearchBackdrop() {
 
 export default function decorate(block) {
   const pictureTag = block.querySelector('picture');
-  pictureTag.classList.add(...'[&_img]:h-96 md:[&_img]:h-full'.split(' '));
+  const img = pictureTag.querySelector('img');
+  img.setAttribute('loading', 'eager');
+  pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
   const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
   const headingTag = block.querySelector('h1');
-  headingTag.classList.add(...'hidden md:block font-semibold text-white'.split(' '));
+  headingTag.classList.add(...'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white'.split(' '));
   parentWrapper.append(headingTag);
   block.classList.add(...'relative'.split(' '));
   block.innerHTML = '';
@@ -526,7 +528,7 @@ export default function decorate(block) {
         class: 'icon icon-search bg-transparent text-black absolute flex ms-2 ms-4 p-1 md:p-0 inset-y-0 start-0 w-6 h-6 my-auto [&_svg]:fill-current cursor-pointer',
       }),
       input({
-        class: 'w-auto relative pl-2 md:pl-0 flex flex-grow text-gray-400 font-medium bg-transparent tracking-wider text-xl placeholder-gray-300 outline-none',
+        class: 'w-auto break-words relative pl-2 md:pl-0 flex flex-grow text-gray-400 font-medium bg-transparent tracking-wider text-2xl placeholder-grey-300 outline-none',
         placeholder: 'What can we help you find today?',
         type: 'text',
       }),

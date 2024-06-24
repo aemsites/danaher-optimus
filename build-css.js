@@ -74,9 +74,28 @@ const fileMappings = [
     wrapper: 'alert-banner-wrapper',
   },
   {
+    content: './templates/blog-page/blog-page.js',
+    output: './templates/blog-page/blog-page.css',
+  },
+  {
+    content: './blocks/child-page/child-page.js',
+    output: './blocks/child-page/child-page.css',
+    wrapper: 'child-page-wrapper',
+  },
+  {
     content: './blocks/table-block/table-block.js',
     output: './blocks/table-block/table-block.css',
     wrapper: 'table-block-wrapper',
+  },
+  {
+    content: './blocks/title-card/title-card.js',
+    output: './blocks/title-card/title-card.css',
+    wrapper: 'title-card-wrapper',
+  },
+  {
+    content: './blocks/breadcrumb/breadcrumb.js',
+    output: './blocks/breadcrumb/breadcrumb.css',
+    wrapper: 'breadcrumb-wrapper',
   },
 ];
 
