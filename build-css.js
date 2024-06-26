@@ -102,6 +102,11 @@ const fileMappings = [
     output: './blocks/card-slider/card-slider.css',
     wrapper: 'card-slider-wrapper',
   },
+  {
+    content: './blocks/marketo-form/marketo-form.js',
+    output: './blocks/marketo-form/marketo-form.css',
+    wrapper: 'marketo-form-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
