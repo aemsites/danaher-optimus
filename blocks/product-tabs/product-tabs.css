@@ -1,7 +1,120 @@
+.product-tabs-wrapper :is(.my-6) {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem
+}
+
+.product-tabs-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.product-tabs-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
+.product-tabs-wrapper :is(.mt-0) {
+  margin-top: 0px
+}
+
+.product-tabs-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
+}
+
 .product-tabs-wrapper :is(.block) {
   display: block
 }
 
-.product-tabs-wrapper :is(.border-b-4) {
-  border-bottom-width: 4px
+.product-tabs-wrapper :is(.flex) {
+  display: flex
+}
+
+.product-tabs-wrapper :is(.h-\[1px\]) {
+  height: 1px
+}
+
+.product-tabs-wrapper :is(.appearance-none) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none
+}
+
+.product-tabs-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
+.product-tabs-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.product-tabs-wrapper :is(.break-keep) {
+  word-break: keep-all
+}
+
+.product-tabs-wrapper :is(.rounded-e) {
+  border-start-end-radius: 0.25rem;
+  border-end-end-radius: 0.25rem
+}
+
+.product-tabs-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.product-tabs-wrapper :is(.border-\[rgb\(44\2c 101\2c 107\)\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(44 101 107 / var(--tw-border-opacity))
+}
+
+.product-tabs-wrapper :is(.bg-\[rgb\(237\2c 246\2c 247\)\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.product-tabs-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.product-tabs-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
+.product-tabs-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
+.product-tabs-wrapper :is(.pt-0) {
+  padding-top: 0px
+}
+
+.product-tabs-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.product-tabs-wrapper :is(.text-4xl) {
+  font-size: 2.25rem;
+  line-height: 2.5rem
+}
+
+.product-tabs-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.product-tabs-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-tabs-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.product-tabs-wrapper :is(.text-\[\#2a3c3c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(42 60 60 / var(--tw-text-opacity))
+}
+
+.product-tabs-wrapper :is(.text-\[rgb\(44\2c 101\2c 107\)\]) {
+  --tw-text-opacity: 1;
+  color: rgb(44 101 107 / var(--tw-text-opacity))
 }
