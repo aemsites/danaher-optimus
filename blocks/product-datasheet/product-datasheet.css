@@ -1,3 +1,8 @@
+.product-datasheet-wrapper :is(.my-2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
 .product-datasheet-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
 }
@@ -50,6 +55,10 @@
 .product-datasheet-wrapper :is(.border-\[\#dde1e1\]) {
   --tw-border-opacity: 1;
   border-color: rgb(221 225 225 / var(--tw-border-opacity))
+}
+
+.product-datasheet-wrapper :is(.pl-5) {
+  padding-left: 1.25rem
 }
 
 .product-datasheet-wrapper :is(.pt-10) {
