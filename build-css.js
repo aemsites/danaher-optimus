@@ -91,6 +91,10 @@ const fileMappings = [
     output: './templates/search-results/search-results.css',
   },
   {
+    content: './templates/searchinject/searchinject.js',
+    output: './templates/searchinject/searchinject.css',
+  },
+  {
     content: './blocks/child-page/child-page.js',
     output: './blocks/child-page/child-page.css',
     wrapper: 'child-page-wrapper',
