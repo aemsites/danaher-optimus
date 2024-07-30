@@ -14,7 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
-import { div } from './dom-builder.js';
+import { div,button } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -87,6 +87,23 @@ export function mouseEnter(msg) {
 export function mouseLeave(msg) {
   var copyText = document.getElementById(msg);
   copyText.innerHTML='';
+}
+export function toolTip(titlebutton,toolTipTextId,title){
+  const buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current p-0' });
+  const overviewTitle = div({ id: titlebutton, class: 'text-left' }, title);
+  const clickToCopyDiv = div({ class: 'bg-[#378189] text-center text-[white] rounded-lg text-sm absolute right-[10px] -top-[20px] text-center text-xs break-keep', id: toolTipTextId }, '');
+  buttonDiv.appendChild(clickToCopyDiv);
+  buttonDiv.appendChild(overviewTitle);
+  overviewTitle.addEventListener('click', () => {
+    clickToCopy(titlebutton);
+  });
+  overviewTitle.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipTextId);
+  });
+  overviewTitle.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipTextId);
+  });
+  return buttonDiv
 }
 export function createRequest(config) {
   const {

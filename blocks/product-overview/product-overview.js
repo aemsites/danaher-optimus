@@ -4,7 +4,7 @@ import {
   a, button,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
-import { clickToCopy, mouseEnter, mouseLeave } from '../../scripts/scripts.js';
+import { clickToCopy, mouseEnter, mouseLeave,toolTip } from '../../scripts/scripts.js';
 
 function createKeyFactElement(key, value) {
   return div(
@@ -130,24 +130,13 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
-  const buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current p-0' });
-  const titleDiv = div({ id: 'titlebutton', class: 'text-left' }, title);
-  const clickToCopyDiv = div({ class: 'bg-[#378189] text-center text-[white] rounded-lg text-sm absolute right-[10px] -top-[20px] text-center text-xs break-keep', id: 'titleToolTipText' }, '');
-  buttonDiv.appendChild(clickToCopyDiv);
-  buttonDiv.appendChild(titleDiv);
-  titleDiv.addEventListener('click', () => {
-    clickToCopy('titlebutton');
-  });
-  titleDiv.addEventListener('mouseenter', () => {
-    mouseEnter('titleToolTipText');
-  });
-  titleDiv.addEventListener('mouseleave', () => {
-    mouseLeave('titleToolTipText');
-  });
+  const overviewTitle = toolTip('overviewtitle','overviewtooltip',title);
+  const datasheetTitle = toolTip('datasheettitle','datasheettooltip',title);
+  const supportAndDownloadTitle = toolTip('supportanddownloadtitle','supportanddownloadtooltip',title);
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
-      buttonDiv,
+      datasheetTitle,
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
       alternativeNames,
@@ -156,14 +145,13 @@ export default async function decorate(block) {
   } else if (block.classList.contains('download')) {
     const supportContainer = div(
       { class: 'font-sans' },
-      buttonDiv,
+      supportAndDownloadTitle,
       productTagsDiv,
     );
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
-      { class: 'font-sans py-6' },
-      buttonDiv,
+      { class: 'font-sans py-6' },overviewTitle,
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
