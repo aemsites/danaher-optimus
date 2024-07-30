@@ -1,0 +1,109 @@
+.product-list-wrapper :is(.mb-3) {
+  margin-bottom: 0.75rem
+}
+
+.product-list-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.product-list-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.product-list-wrapper :is(.block) {
+  display: block
+}
+
+.product-list-wrapper :is(.flex) {
+  display: flex
+}
+
+.product-list-wrapper :is(.appearance-none) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none
+}
+
+.product-list-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.product-list-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
+.product-list-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.product-list-wrapper :is(.break-keep) {
+  word-break: keep-all
+}
+
+.product-list-wrapper :is(.rounded-e) {
+  border-start-end-radius: 0.25rem;
+  border-end-end-radius: 0.25rem
+}
+
+.product-list-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.product-list-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.product-list-wrapper :is(.border-\[rgb\(44\2c 101\2c 107\)\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(44 101 107 / var(--tw-border-opacity))
+}
+
+.product-list-wrapper :is(.bg-\[rgb\(237\2c 246\2c 247\)\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.product-list-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.product-list-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
+.product-list-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
+.product-list-wrapper :is(.pt-0) {
+  padding-top: 0px
+}
+
+.product-list-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.product-list-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.product-list-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-list-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.product-list-wrapper :is(.text-\[rgb\(44\2c 101\2c 107\)\]) {
+  --tw-text-opacity: 1;
+  color: rgb(44 101 107 / var(--tw-text-opacity))
+}
+
+.product-list-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
