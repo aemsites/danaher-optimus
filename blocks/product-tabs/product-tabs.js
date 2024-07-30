@@ -1,6 +1,7 @@
 import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
+import { clickToCopy, mouseEnter, mouseLeave } from '../../scripts/scripts.js';
 
 const path = window.location.pathname;
 const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
@@ -37,7 +38,7 @@ export default async function decorate(block) {
   if (title !== undefined || title === ' ') {
     document.title = title;
   }
-  block.classList.add(...'md:border-b sm:border-b flex flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
+  block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
   const tabs = [
     { name: productOverview, tabId: 'Overview' },
@@ -55,11 +56,24 @@ export default async function decorate(block) {
       toggleTabs(tab.tabId, mmgTabs);
     });
   });
-  const productTabs = div({ class: 'product-tabs-productID md:mt-0 mt-6 order-2' });
-  productTabs.innerHTML = response?.at(0).raw.productslug.split('-').slice(-1);
-  block.innerHTML = '';
-  block.appendChild(productTabs);
-  block.appendChild(mmgTabs);
+  const snskubtn = button({ class: 'appearance-none  cursor-pointer outline-none  product-tabs-productID md:mt-0 mt-6 order-2  hover:border rounded-lg border-current p' });
+  const skuItem = div({ class: 'flex text-left ', id: 'skuItem' });
+  const clickToCopyDiv = div({ class: ' absolute bg-[#378189] text-center text-[white] rounded-lg text-sm top-[-20px]', id: 'skuToolTipText' }, '');
 
+  skuItem.innerHTML = response?.at(0).raw.productslug.split('-').slice(-1);
+  block.innerHTML = '';
+  skuItem.addEventListener('click', () => {
+    clickToCopy('skuItem');
+  });
+  skuItem.addEventListener('mouseenter', () => {
+    mouseEnter('skuToolTipText');
+  });
+  skuItem.addEventListener('mouseleave', () => {
+    mouseLeave('skuToolTipText');
+  });
+  snskubtn.appendChild(clickToCopyDiv);
+  snskubtn.appendChild(skuItem);
+  block.appendChild(snskubtn);
+  block.appendChild(mmgTabs);
   toggleTabs(tabs[0].tabId, mmgTabs);
 }

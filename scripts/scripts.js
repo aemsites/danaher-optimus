@@ -75,7 +75,19 @@ export function isValidProperty(property) {
   }
   return false;
 }
-
+export function clickToCopy(sku) {
+  var copyText = document.getElementById(sku);
+  navigator.clipboard.writeText(copyText.innerText);
+  document.getElementById(sku).previousElementSibling.innerHTML='Copied!';
+}
+export function mouseEnter(msg) {
+  var copyText = document.getElementById(msg);
+  copyText.innerHTML='Click to copy';
+}
+export function mouseLeave(msg) {
+  var copyText = document.getElementById(msg);
+  copyText.innerHTML='';
+}
 export function createRequest(config) {
   const {
     url,
