@@ -132,7 +132,7 @@ export default async function decorate(block) {
   // Constructing the container with title, description, alternative names, and key-value pairs
   const buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current p-0' });
   const titleDiv = div({ id: 'titlebutton', class: 'text-left' }, title);
-  const clickToCopyDiv = div({ class: 'bg-[#378189] text-center text-[white] rounded-lg text-sm absolute right-[10px] -top-[20px] text-center break-keep', id: 'titleToolTipText' }, '');
+  const clickToCopyDiv = div({ class: 'bg-[#378189] text-center text-[white] rounded-lg text-sm absolute right-[10px] -top-[20px] text-center text-xs break-keep', id: 'titleToolTipText' }, '');
   buttonDiv.appendChild(clickToCopyDiv);
   buttonDiv.appendChild(titleDiv);
   titleDiv.addEventListener('click', () => {
