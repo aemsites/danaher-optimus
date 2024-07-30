@@ -1,12 +1,14 @@
 import header from './header.js';
 import footer from './footer.js';
 import accordion from './accordion.js';
+import home from './home.js';
 import metadata from './metadata.js';
 import postProcessSVGIcons from './postProcessSVGIcons.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export const transformers = [
   accordion,
+  home,
 ];
 
 export const asyncTransformers = [
