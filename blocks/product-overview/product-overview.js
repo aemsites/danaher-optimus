@@ -1,10 +1,10 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, h6, p, h3, h5, ul, li, span,
-  a, button,
+  a,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
-import { clickToCopy, mouseEnter, mouseLeave,toolTip } from '../../scripts/scripts.js';
+import { toolTip } from '../../scripts/scripts.js';
 
 function createKeyFactElement(key, value) {
   return div(
@@ -130,9 +130,9 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
-  const overviewTitle = toolTip('overviewtitle','overviewtooltip',title);
-  const datasheetTitle = toolTip('datasheettitle','datasheettooltip',title);
-  const supportAndDownloadTitle = toolTip('supportanddownloadtitle','supportanddownloadtooltip',title);
+  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title);
+  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title);
+  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title);
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
@@ -151,7 +151,8 @@ export default async function decorate(block) {
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
-      { class: 'font-sans py-6' },overviewTitle,
+      { class: 'font-sans py-6' },
+      overviewTitle,
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
