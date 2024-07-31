@@ -56,9 +56,9 @@ export default async function decorate(block) {
       toggleTabs(tab.tabId, mmgTabs);
     });
   });
-  const skubutton = button({ class: 'appearance-none  cursor-pointer outline-none  product-tabs-productID md:mt-0 mt-6 order-2  hover:border rounded-lg border-current p' });
+  const skubutton = button({ class: 'appearance-none  cursor-pointer outline-none  product-tabs-productID order-2  hover:border rounded-lg border-current p' });
   const skuItem = div({ class: 'flex text-left ', id: 'skuItem' }, response?.at(0).raw.productslug.split('-').slice(-1));
-  const clickToCopyDiv = div({ class: ' absolute bg-[#378189] text-center text-[white] rounded-lg text-sm top-[-20px]', id: 'skuToolTipText' }, '');
+  const clickToCopyDiv = div({ class: ' absolute bg-[#378189] text-center text-[white] rounded-lg text-sm top-[-20px] md:absolute md:top-[-15px]', id: 'skuToolTipText' }, '');
   block.innerHTML = '';
   const btn = skuToolTip(skubutton, skuItem, clickToCopyDiv, 'skuToolTipText', 'skuItem');
   block.appendChild(btn);
