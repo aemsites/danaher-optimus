@@ -1,73 +1,9 @@
-.product-tabs-wrapper :is(.absolute) {
-  position: absolute
-}
-
-.product-tabs-wrapper :is(.relative) {
-  position: relative
-}
-
-.product-tabs-wrapper :is(.top-\[-20px\]) {
-  top: -20px
-}
-
-.product-tabs-wrapper :is(.top-\[-88px\]) {
-  top: -88px
-}
-
-.product-tabs-wrapper :is(.top-\[88px\]) {
-  top: 88px
-}
-
-.product-tabs-wrapper :is(.top-\[-15\]) {
-  top: -15
-}
-
-.product-tabs-wrapper :is(.top-\[-20\]) {
-  top: -20
-}
-
-.product-tabs-wrapper :is(.top-\[15\]) {
-  top: 15
-}
-
-.product-tabs-wrapper :is(.top-\[-15px\]) {
-  top: -15px
-}
-
-.product-tabs-wrapper :is(.top-\[-40px\]) {
-  top: -40px
-}
-
-.product-tabs-wrapper :is(.top-\[-30px\]) {
-  top: -30px
-}
-
-.product-tabs-wrapper :is(.top-\[-17px\]) {
-  top: -17px
-}
-
-.product-tabs-wrapper :is(.top-\[-16px\]) {
-  top: -16px
-}
-
 .product-tabs-wrapper :is(.order-1) {
   order: 1
 }
 
-.product-tabs-wrapper :is(.order-2) {
-  order: 2
-}
-
 .product-tabs-wrapper :is(.mr-8) {
   margin-right: 2rem
-}
-
-.product-tabs-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
-}
-
-.product-tabs-wrapper :is(.mt-0) {
-  margin-top: 0px
 }
 
 .product-tabs-wrapper :is(.block) {
@@ -78,46 +14,8 @@
   display: flex
 }
 
-.product-tabs-wrapper :is(.hidden) {
-  display: none
-}
-
-.product-tabs-wrapper :is(.size-fit) {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content
-}
-
-.product-tabs-wrapper :is(.cursor-pointer) {
-  cursor: pointer
-}
-
-.product-tabs-wrapper :is(.appearance-none) {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none
-}
-
 .product-tabs-wrapper :is(.flex-col) {
   flex-direction: column
-}
-
-.product-tabs-wrapper :is(.items-center) {
-  align-items: center
-}
-
-.product-tabs-wrapper :is(.rounded-lg) {
-  border-radius: 0.5rem
-}
-
-.product-tabs-wrapper :is(.rounded) {
-  border-radius: 0.25rem
-}
-
-.product-tabs-wrapper :is(.rounded-t-lg) {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem
 }
 
 .product-tabs-wrapper :is(.border-b) {
@@ -133,25 +31,8 @@
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
-.product-tabs-wrapper :is(.border-current) {
-  border-color: currentColor
-}
-
-.product-tabs-wrapper :is(.bg-\[\#378189\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
-}
-
 .product-tabs-wrapper :is(.pb-4) {
   padding-bottom: 1rem
-}
-
-.product-tabs-wrapper :is(.text-left) {
-  text-align: left
-}
-
-.product-tabs-wrapper :is(.text-center) {
-  text-align: center
 }
 
 .product-tabs-wrapper :is(.text-base) {
@@ -159,19 +40,9 @@
   line-height: 1.5rem
 }
 
-.product-tabs-wrapper :is(.text-sm) {
-  font-size: 0.875rem;
-  line-height: 1.25rem
-}
-
 .product-tabs-wrapper :is(.text-xl) {
   font-size: 1.25rem;
   line-height: 1.75rem
-}
-
-.product-tabs-wrapper :is(.text-xs) {
-  font-size: 0.75rem;
-  line-height: 1rem
 }
 
 .product-tabs-wrapper :is(.font-semibold) {
@@ -183,45 +54,9 @@
   color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
-.product-tabs-wrapper :is(.text-\[white\]) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
 .product-tabs-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-.product-tabs-wrapper :is(.outline-none) {
-  outline: 2px solid transparent;
-  outline-offset: 2px
-}
-
-.product-tabs-wrapper :is(.hover\:border:hover) {
-  border-width: 1px
-}
-
-@media (max-width: 768px) {
-  .product-tabs-wrapper :is(.max-\[768px\]\:top-\[-20\]) {
-    top: -20
-  }
-
-  .product-tabs-wrapper :is(.max-\[768px\]\:top-\[-15\]) {
-    top: -15
-  }
-}
-
-@media (max-width: 300px) {
-  .product-tabs-wrapper :is(.max-\[300px\]\:top-\[-15\]) {
-    top: -15
-  }
-}
-
-@media (max-width: 100px) {
-  .product-tabs-wrapper :is(.max-\[100px\]\:top-\[-15\]) {
-    top: -15
-  }
 }
 
 @media (min-width: 640px) {
@@ -249,22 +84,6 @@
 
   .product-tabs-wrapper :is(.md\:top-\[-15px\]) {
     top: -15px
-  }
-
-  .product-tabs-wrapper :is(.md\:top-\[15px\]) {
-    top: 15px
-  }
-
-  .product-tabs-wrapper :is(.md\:top-\[-20px\]) {
-    top: -20px
-  }
-
-  .product-tabs-wrapper :is(.md\:top-\[88px\]) {
-    top: 88px
-  }
-
-  .product-tabs-wrapper :is(.md\:mt-0) {
-    margin-top: 0px
   }
 
   .product-tabs-wrapper :is(.md\:block) {
