@@ -2,8 +2,52 @@
   position: absolute
 }
 
+.product-tabs-wrapper :is(.relative) {
+  position: relative
+}
+
 .product-tabs-wrapper :is(.top-\[-20px\]) {
   top: -20px
+}
+
+.product-tabs-wrapper :is(.top-\[-88px\]) {
+  top: -88px
+}
+
+.product-tabs-wrapper :is(.top-\[88px\]) {
+  top: 88px
+}
+
+.product-tabs-wrapper :is(.top-\[-15\]) {
+  top: -15
+}
+
+.product-tabs-wrapper :is(.top-\[-20\]) {
+  top: -20
+}
+
+.product-tabs-wrapper :is(.top-\[15\]) {
+  top: 15
+}
+
+.product-tabs-wrapper :is(.top-\[-15px\]) {
+  top: -15px
+}
+
+.product-tabs-wrapper :is(.top-\[-40px\]) {
+  top: -40px
+}
+
+.product-tabs-wrapper :is(.top-\[-30px\]) {
+  top: -30px
+}
+
+.product-tabs-wrapper :is(.top-\[-17px\]) {
+  top: -17px
+}
+
+.product-tabs-wrapper :is(.top-\[-16px\]) {
+  top: -16px
 }
 
 .product-tabs-wrapper :is(.order-1) {
@@ -22,12 +66,27 @@
   margin-top: 1.5rem
 }
 
+.product-tabs-wrapper :is(.mt-0) {
+  margin-top: 0px
+}
+
 .product-tabs-wrapper :is(.block) {
   display: block
 }
 
 .product-tabs-wrapper :is(.flex) {
   display: flex
+}
+
+.product-tabs-wrapper :is(.hidden) {
+  display: none
+}
+
+.product-tabs-wrapper :is(.size-fit) {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content
 }
 
 .product-tabs-wrapper :is(.cursor-pointer) {
@@ -44,8 +103,21 @@
   flex-direction: column
 }
 
+.product-tabs-wrapper :is(.items-center) {
+  align-items: center
+}
+
 .product-tabs-wrapper :is(.rounded-lg) {
   border-radius: 0.5rem
+}
+
+.product-tabs-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.product-tabs-wrapper :is(.rounded-t-lg) {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem
 }
 
 .product-tabs-wrapper :is(.border-b) {
@@ -97,6 +169,11 @@
   line-height: 1.75rem
 }
 
+.product-tabs-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
 .product-tabs-wrapper :is(.font-semibold) {
   font-weight: 600
 }
@@ -125,6 +202,28 @@
   border-width: 1px
 }
 
+@media (max-width: 768px) {
+  .product-tabs-wrapper :is(.max-\[768px\]\:top-\[-20\]) {
+    top: -20
+  }
+
+  .product-tabs-wrapper :is(.max-\[768px\]\:top-\[-15\]) {
+    top: -15
+  }
+}
+
+@media (max-width: 300px) {
+  .product-tabs-wrapper :is(.max-\[300px\]\:top-\[-15\]) {
+    top: -15
+  }
+}
+
+@media (max-width: 100px) {
+  .product-tabs-wrapper :is(.max-\[100px\]\:top-\[-15\]) {
+    top: -15
+  }
+}
+
 @media (min-width: 640px) {
   .product-tabs-wrapper :is(.sm\:border-b) {
     border-bottom-width: 1px
@@ -150,6 +249,18 @@
 
   .product-tabs-wrapper :is(.md\:top-\[-15px\]) {
     top: -15px
+  }
+
+  .product-tabs-wrapper :is(.md\:top-\[15px\]) {
+    top: 15px
+  }
+
+  .product-tabs-wrapper :is(.md\:top-\[-20px\]) {
+    top: -20px
+  }
+
+  .product-tabs-wrapper :is(.md\:top-\[88px\]) {
+    top: 88px
   }
 
   .product-tabs-wrapper :is(.md\:mt-0) {
