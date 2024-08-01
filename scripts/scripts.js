@@ -82,16 +82,17 @@ export function clickToCopy(sku) {
 }
 export function mouseEnter(msg) {
   var copyText = document.getElementById(msg);
-  copyText.innerHTML='Click to copy';
+  copyText.classList.remove('hidden');
 }
 export function mouseLeave(msg) {
   var copyText = document.getElementById(msg);
-  copyText.innerHTML='';
+  copyText.classList.add('hidden');
+  copyText.innerHTML='Click to Copy';
 }
 export function toolTip(titlebutton,toolTipTextId,title){
   const buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current' });
   const copyTitle = div({ id: titlebutton, class: 'text-left' }, title);
-  const clickToCopyDiv = div({ class: 'bg-[#378189] text-center text-[white] rounded-lg text-sm absolute right-[10px] -top-[20px] text-center text-xs break-keep', id: toolTipTextId }, '');
+  const clickToCopyDiv = div({ class: 'hidden bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[15px] text-center text-xs break-keep', id: toolTipTextId }, 'Click to Copy');
   buttonDiv.appendChild(clickToCopyDiv);
   buttonDiv.appendChild(copyTitle);
   copyTitle.addEventListener('click', () => {
@@ -100,22 +101,42 @@ export function toolTip(titlebutton,toolTipTextId,title){
   copyTitle.addEventListener('mouseenter', () => {
     mouseEnter(toolTipTextId);
   });
+  
   copyTitle.addEventListener('mouseleave', () => {
     mouseLeave(toolTipTextId);
   });
+  clickToCopyDiv.addEventListener('click', () => {
+    clickToCopy(titlebutton);
+  });
+  clickToCopyDiv.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipTextId);
+  });
+  clickToCopyDiv.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipTextId);
+  });
+  
   return buttonDiv
 }
 
 export function skuToolTip(skubutton,skuItem,clickToCopyDiv,skuToolTipText,btn){
-  skuItem.addEventListener('click', () => {
+   skuItem.addEventListener('click', () => {
     clickToCopy(btn);
   });
   skuItem.addEventListener('mouseenter', () => {
     mouseEnter(skuToolTipText);
   });
   skuItem.addEventListener('mouseleave', () => {
-    mouseLeave(skuToolTipText);
+  mouseLeave(skuToolTipText);
   });
+  clickToCopyDiv.addEventListener('click', () => {
+    clickToCopy(btn);
+  });
+  clickToCopyDiv.addEventListener('mouseenter', () => {
+    mouseEnter(skuToolTipText);
+  });
+  clickToCopyDiv.addEventListener('mouseleave', () => {
+    mouseLeave(skuToolTipText);
+    });
   skubutton.appendChild(clickToCopyDiv);
   skubutton.appendChild(skuItem);
   return skubutton;
