@@ -130,9 +130,9 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
-  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title);
-  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title);
-  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title);
+  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title, null);
+  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title, null);
+  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title, null);
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },

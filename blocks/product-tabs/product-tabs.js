@@ -1,7 +1,7 @@
 import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
-import { skuToolTip } from '../../scripts/scripts.js';
+import { toolTip } from '../../scripts/scripts.js';
 
 const path = window.location.pathname;
 const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
@@ -56,12 +56,9 @@ export default async function decorate(block) {
       toggleTabs(tab.tabId, mmgTabs);
     });
   });
-  const skubutton = button({ id: 'skubutton', class: 'product-tabs-productID md:flex-col mt-0 mt-6 order-2   hover:border rounded-lg border-current p' });
-  const skuItem = div({ class: 'flex text-left ', id: 'skuItem' }, response?.at(0).raw.productslug.split('-').slice(-1));
-  const clickToCopyDiv = div({ class: 'hidden top-[-15px] absolute bg-[#378189] text-center text-[white] rounded-t-lg text-xs', id: 'skuToolTipText' }, 'Click to Copy');
+  const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
   block.innerHTML = '';
-  const btn = skuToolTip(skubutton, skuItem, clickToCopyDiv, 'skuToolTipText', 'skuItem');
-  block.appendChild(btn);
+  block.appendChild(skuItem);
   block.appendChild(mmgTabs);
   toggleTabs(tabs[0].tabId, mmgTabs);
 }

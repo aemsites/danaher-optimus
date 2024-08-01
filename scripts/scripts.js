@@ -89,10 +89,19 @@ export function mouseLeave(msg) {
   copyText.classList.add('hidden');
   copyText.innerHTML='Click to Copy';
 }
-export function toolTip(titlebutton,toolTipTextId,title){
-  const buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current' });
+export function toolTip(titlebutton,toolTipTextId,title,skuClass){
+  let buttonDiv;
+  let clickToCopyDiv;
+  if(skuClass&&String(skuClass.trim!==null)){
+    buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID md:flex-col mt-0 mt-6 order-2   hover:border rounded-lg border-current p' });
+    clickToCopyDiv = div({ class: 'hidden bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute -top-[15px] text-center text-xs break-keep', id: toolTipTextId }, 'Click to Copy');
+  }
+  else{
+   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border rounded-lg border-current' });
+   clickToCopyDiv = div({ class: 'hidden bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[15px] text-center text-xs break-keep', id: toolTipTextId }, 'Click to Copy');
+  }
+
   const copyTitle = div({ id: titlebutton, class: 'text-left' }, title);
-  const clickToCopyDiv = div({ class: 'hidden bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[15px] text-center text-xs break-keep', id: toolTipTextId }, 'Click to Copy');
   buttonDiv.appendChild(clickToCopyDiv);
   buttonDiv.appendChild(copyTitle);
   copyTitle.addEventListener('click', () => {
