@@ -3,6 +3,7 @@ import {
   div, h2, span, button, img, li, ul, thead, tr, table, th, a, tbody, td,
 } from '../../scripts/dom-builder.js';
 import { decorateModals } from '../../scripts/modal.js';
+import { buildBlock } from '../../scripts/aem.js';
 
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'Tested') {
@@ -62,7 +63,7 @@ function productPromise() {
   return productNotes;
 }
 
-function publicationsAndImageSection(images, publicationArray) {
+function publicationsAndImageSection(images, publicationArray, allCount) {
   const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
   const publicationsContent = div();
   if (publicationArray) {
@@ -92,7 +93,24 @@ function publicationsAndImageSection(images, publicationArray) {
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
   const imagesection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Images'), imagecolumn);
   if (publicationArray.length) {
-    const publicationsection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Publications')));
+    const publicationsection = div(
+      { class: 'w-1/2 max-[959px]:w-[100%] mt-4 space-y-4' },
+      div(
+        { class: 'flex items-center justify-between' },
+        h2({ class: 'text-[#2A3C3C] font-semibold text-lg' }, 'Publications'),
+        button(
+          {
+            type: 'button',
+            class: 'inline-flex items-center px-4 py-1.5 text-sm font-medium text-center text-white bg-black/80 rounded-full hover:bg-black/90',
+          },
+          'View all',
+          span(
+            { class: 'inline-flex items-center justify-center h-4 ms-2 p-1 text-xs font-semibold tracking-wider bg-neutral-500/50 rounded-full' },
+            allCount,
+          ),
+        ),
+      ),
+    );
     publicationsection.appendChild(publicationsContent);
     pubandimagesection.appendChild(publicationsection);
   }
@@ -134,6 +152,11 @@ function allApplicationTableData(tableData, application) {
 export default async function decorate(block) {
   block.classList.add(...'mx-auto w-[87%] max-[768px]:w-full'.split(' '));
   const response = await getProductResponse();
+  console.log(response);
+  const {
+    reactivitytabledata, publicationsjson, images,
+    reactivityapplications, numpublications,
+  } = response[0].raw;
   const reactivityData = div(
     { class: 'relative w-full box-content ' },
     h2({ class: 'font-semibold text-black text-[24px] leading-[1.33] tracking-[-.03125rem] mb-4' }, 'Reactivity Data'),
@@ -141,7 +164,7 @@ export default async function decorate(block) {
   );
   const buttonsPanel = div({ class: 'flex gap-2 flex-wrap text-black tracking-[2px] font-semibold text-sm pb-5 max-[959px]:w-[100%]' });
   buttonsPanel.appendChild(button({ class: 'px-6 py-3 border-black boarder-solid  bg-black text-white font-semibold rounded-[28px] tracking-[.2px]' }, 'All applications'));
-  const reactivityApplication = response[0].raw.reactivityapplications;
+  const reactivityApplication = reactivityapplications;
   if (reactivityApplication) {
     reactivityApplication.forEach((name) => {
       buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black font-semibold rounded-[28px] tracking-[.2px]' }, name));
@@ -151,15 +174,24 @@ export default async function decorate(block) {
     reactivityApplicationWrapper.appendChild(buttonsPanel);
     const productInfo = productPromise();
     reactivityApplicationWrapper.appendChild(productInfo);
-    const reactivityJson = response[0].raw.reactivitytabledata
-      ? response[0].raw.reactivitytabledata : [];
+    const reactivityJson = reactivitytabledata
+      ? reactivitytabledata : [];
     const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
     reactivityApplicationWrapper.appendChild(tableContent);
-    const publicationArray = response[0].raw.publicationsjson
-      ? response[0].raw.publicationsjson.slice(0, 2) : [];
-    const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
-    const pubandimagesection = publicationsAndImageSection(images, publicationArray);
-    reactivityApplicationWrapper.appendChild(pubandimagesection);
+    const publicationArray = publicationsjson
+      ? publicationsjson.slice(0, 2) : [];
+    const newImages = images ? images.slice(0, 3) : [];
+    const blockSection = publicationsAndImageSection(newImages, publicationArray, numpublications);
+    if (publicationsjson.length > 2) {
+      const drawerSection = div({ class: 'border border-b-slate-400 mb-10' });
+      const titleBlock = buildBlock('title-card', { elems: [] });
+      drawerSection.append(titleBlock);
+      console.log(drawerSection);
+      const main = document.querySelector('main');
+      const section = main.querySelector('div');
+      main.insertBefore(drawerSection, section);
+    }
+    reactivityApplicationWrapper.appendChild(blockSection);
     block.append(reactivityData);
     block.appendChild(reactivityApplicationWrapper);
   }
