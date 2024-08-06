@@ -98,15 +98,15 @@ export function toolTip(textId,toolTipClassId,title,skuClass){
   let buttonDiv;
   let clickToCopyDiv;
   if(skuClass&&String(skuClass.trim!==null)){
-    buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col  hover:border border-stone-900 rounded-lg border-inherit' });
-    clickToCopyDiv = div({ class: 'hidden w-auto  bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap ', id: toolTipClassId }, 'Click to Copy');
+    buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col' });
+    clickToCopyDiv = div({ class: 'hidden w-auto  px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap max-[768px]:top-[85px]', id: toolTipClassId }, 'Click to Copy');
   }
   else{
-   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold hover:border border-stone-900 rounded-lg border-inherit' });
-   clickToCopyDiv = div({ class: 'hidden w-auto bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap', id: toolTipClassId }, 'Click to Copy');
+   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
+   clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap', id: toolTipClassId }, 'Click to Copy');
   }
 
-  const text = div({ id: textId, class: 'text-left' }, title);
+  const text = div({ id: textId, class: 'text-left border border-white hover:border-stone-900 rounded-lg ' }, title);
   buttonDiv.appendChild(clickToCopyDiv);
   buttonDiv.appendChild(text);
   text.addEventListener('click', () => {
