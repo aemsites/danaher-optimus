@@ -76,6 +76,10 @@ export function isValidProperty(property) {
   return false;
 }
 
+export function paginate(list, currentPage, perPage) {
+  return list.slice((currentPage - 1) * perPage, currentPage * perPage);
+}
+
 export function createRequest(config) {
   const {
     url,

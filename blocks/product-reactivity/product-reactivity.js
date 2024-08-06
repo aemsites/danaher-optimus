@@ -1,9 +1,49 @@
 import { getProductResponse } from '../../scripts/search.js';
 import {
   div, h2, span, button, img, li, ul, thead, tr, table, th, a, tbody, td,
+  input,
 } from '../../scripts/dom-builder.js';
 import { decorateModals } from '../../scripts/modal.js';
-import { buildBlock } from '../../scripts/aem.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { paginate } from '../../scripts/scripts.js';
+
+const perPageList = 10;
+const dataContainer = ul({ class: 'space-y-4 py-4 overflow-scroll' });
+
+function decorateAllPublications({ el, jsonData, currentPage = 1, perPage = perPageList }) {
+  const paginatedList = paginate(jsonData, currentPage, perPage);
+  dataContainer.innerHTML = '';
+  paginatedList.forEach((listedJSON) => {
+    const listed = JSON.parse(listedJSON);
+    const liTag = li(
+      { class: 'flex gap-4' },
+      div(
+        { class: 'min-h-32 flex flex-col justify-between flex-1 p-4 font-normal text-sm rounded-lg border bg-white' },
+        div(
+          { class: 'flex justify-between text-xs text-gray-500 font-semibold' },
+          span(`${listed.journal} ${listed.pages}`),
+          span(listed.publicationDate)
+        ),
+        div(
+          { class: 'text-black py-2' },
+          listed.name
+        ),
+        div(
+          { class: 'flex flex-col gap-y-2 text-xs text-gray-500 font-semibold' },
+          listed.authors && listed.authors.length > 0 && div(listed.authors[0]),
+          a({ class: 'flex gap-x-1 shrink-0', href: '#' }, `PubMed ${listed.pubmedId}`)
+        )
+      )
+    )
+    dataContainer.append(liTag);
+  });
+  el.append(dataContainer);
+}
+
+function filterPublications(event) {
+  const { value } = event.target;
+}
 
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'Tested') {
@@ -101,6 +141,9 @@ function publicationsAndImageSection(images, publicationArray, allCount) {
         button(
           {
             type: 'button',
+            onclick: () => {
+              showDrawer('drawer-eg');
+            },
             class: 'inline-flex items-center px-4 py-1.5 text-sm font-medium text-center text-white bg-black/80 rounded-full hover:bg-black/90',
           },
           'View all',
@@ -183,13 +226,21 @@ export default async function decorate(block) {
     const newImages = images ? images.slice(0, 3) : [];
     const blockSection = publicationsAndImageSection(newImages, publicationArray, numpublications);
     if (publicationsjson.length > 2) {
-      const drawerSection = div({ class: 'border border-b-slate-400 mb-10' });
-      const titleBlock = buildBlock('title-card', { elems: [] });
-      drawerSection.append(titleBlock);
-      console.log(drawerSection);
-      const main = document.querySelector('main');
-      const section = main.querySelector('div');
-      main.insertBefore(drawerSection, section);
+      const searchBar = div(
+        { class: 'relative' },
+        input({
+          type: 'text',
+          class: 'block w-full py-2 pl-3 pe-8 text-sm text-gray-600 tracking-wide bg-white border border-slate-300 focus-visible:outline-none focus-visible:border-sky-500 focus-visible:ring-1 focus-visible:ring-sky-500 rounded-full',
+          placeholder: 'Search by topic, author or PubMed ID',
+          onkeyup: filterPublications
+        }),
+        span({ class: 'icon icon-search w-5 h-5 absolute end-2.5 bottom-2.5 cursor-pointer' }),
+      );
+      const drawerEl = await decorateDrawer({ id: 'drawer-eg', title: 'Publications', isBackdrop: true });
+      const drawerContent = drawerEl.querySelector('#drawer-eg .drawer-body');
+      drawerContent.append(searchBar);
+      decorateIcons(drawerEl);
+      decorateAllPublications({ el: drawerContent, jsonData: publicationsjson });
     }
     reactivityApplicationWrapper.appendChild(blockSection);
     block.append(reactivityData);

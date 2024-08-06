@@ -30,6 +30,10 @@
   margin-top: 0.5rem
 }
 
+.accordion-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
 .accordion-wrapper :is(.box-border) {
   box-sizing: border-box
 }
