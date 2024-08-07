@@ -413,3 +413,9 @@
     color: rgb(0 0 0 / var(--tw-text-opacity))
   }
 }
+
+@media (min-width: 1024px) {
+  .product-overview-wrapper :is(.lg\:h-full) {
+    height: 100%
+  }
+}
