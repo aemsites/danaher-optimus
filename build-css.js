@@ -83,6 +83,10 @@ const fileMappings = [
     output: './templates/blog-page/blog-page.css',
   },
   {
+    content: './templates/pathways/pathways.js',
+    output: './templates/pathways/pathways.css',
+  },
+  {
     content: './templates/product-detail/product-detail.js',
     output: './templates/product-detail/product-detail.css',
   },
@@ -111,6 +115,11 @@ const fileMappings = [
     wrapper: 'breadcrumb-wrapper',
   },
   {
+    content: './blocks/pagination/pagination.js',
+    output: './blocks/pagination/pagination.css',
+    wrapper: 'pagination-wrapper',
+  },
+  {
     content: './blocks/card-slider/card-slider.js',
     output: './blocks/card-slider/card-slider.css',
     wrapper: 'card-slider-wrapper',
@@ -134,6 +143,11 @@ const fileMappings = [
     content: './blocks/hero-video/hero-video.js',
     output: './blocks/hero-video/hero-video.css',
     wrapper: 'hero-video-wrapper',
+  },
+  {
+    content: './blocks/marketo-form/marketo-form.js',
+    output: './blocks/marketo-form/marketo-form.css',
+    wrapper: 'marketo-form-wrapper',
   },
   {
     content: './blocks/disclaimer/disclaimer.js',
@@ -191,9 +205,19 @@ const fileMappings = [
     wrapper: 'product-protocols-wrapper',
   },
   {
+    content: './blocks/cta/cta.js',
+    output: './blocks/cta/cta.css',
+    wrapper: 'cta-wrapper',
+  },
+  {
     content: './blocks/page-navigation/page-navigation.js',
     output: './blocks/page-navigation/page-navigation.css',
     wrapper: 'page-navigation-wrapper',
+  },
+  {
+    content: './blocks/product-promise/product-promise.js',
+    output: './blocks/product-promise/product-promise.css',
+    wrapper: 'product-promise-wrapper',
   },
 ];
 
