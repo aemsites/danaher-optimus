@@ -149,7 +149,7 @@ export default async function decorate(block) {
     const overviewContainer = div(
       { class: 'font-sans py-6' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
-      div({ class: 'text-black max-h-11 overflow-hidden md:h-full md:text-xl md:font-normal md:tracking-wide' }, description),
+      div({ class: 'text-black xs:max-h-11 xs:overflow-hidden md:h-full md:text-xl md:font-normal md:tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
