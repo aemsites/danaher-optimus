@@ -132,7 +132,7 @@ export default async function decorate(block) {
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-base lg:text-4xl pb-4 font-bold' }, title),
       div({ class: 'md:text-black md:text-xl md:font-normal' }, description),
       productTagsDiv,
       alternativeNames,
@@ -141,14 +141,14 @@ export default async function decorate(block) {
   } else if (block.classList.contains('download')) {
     const supportContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-base lg:text-4xl pb-4 font-bold' }, title),
       productTagsDiv,
     );
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
       { class: 'font-sans py-6' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-base lg:text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black max-h-11 overflow-hidden lg:h-full md:text-xl md:font-normal md:tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
