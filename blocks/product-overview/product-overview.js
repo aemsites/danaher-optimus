@@ -88,7 +88,7 @@ export default async function decorate(block) {
     ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
   const { title } = rawData;
   const description = rawData.description
-    ? div({ class: 'text-black text-xl font-normal' }, rawData.description) : '';
+    ? div({ class: 'text-black md:text-xl md:font-normal' }, rawData.description) : '';
   const reviewSummary = JSON.parse(rawData.reviewssummaryjson);
   const { aggregatedRating, numberOfReviews } = reviewSummary;
   const dataIsotype = rawData.isotype;
@@ -133,7 +133,7 @@ export default async function decorate(block) {
     const datasheetContainer = div(
       { class: 'font-sans' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
-      div({ class: 'text-black text-xl font-normal' }, description),
+      div({ class: 'md:text-black md:text-xl md:font-normal' }, description),
       productTagsDiv,
       alternativeNames,
     );
