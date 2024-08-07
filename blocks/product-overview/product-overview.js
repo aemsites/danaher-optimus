@@ -87,7 +87,8 @@ export default async function decorate(block) {
   const alternativeNames = targetJsonData.alternativeNames
     ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
   const { title } = rawData;
-  //const description = rawData.description ? div({ class: 'text-black md:text-xl md:font-normal' }, rawData.description) : '';
+  const description = rawData.description 
+  ? div({ class: 'text-black md:text-xl md:font-normal' }, rawData.description) : '';
   const reviewSummary = JSON.parse(rawData.reviewssummaryjson);
   const { aggregatedRating, numberOfReviews } = reviewSummary;
   const dataIsotype = rawData.isotype;
@@ -132,7 +133,7 @@ export default async function decorate(block) {
     const datasheetContainer = div(
       { class: 'font-sans' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
-      //div({ class: 'md:text-black md:text-xl md:font-normal' }, description),
+      div({ class: 'md:text-black md:text-xl md:font-normal' }, description),
       productTagsDiv,
       alternativeNames,
     );
@@ -148,7 +149,7 @@ export default async function decorate(block) {
     const overviewContainer = div(
       { class: 'font-sans py-6' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
-      //div({ class: 'text-black md:text-xl md:font-normal md:tracking-wide' }, description),
+      div({ class: 'text-black max-h-11 overflow-hidden md:h-full md:text-xl md:font-normal md:tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
