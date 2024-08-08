@@ -75,7 +75,6 @@ export function isValidProperty(property) {
   }
   return false;
 }
-
 export function clickToCopy(sku) {
   var copyText = document.getElementById(sku);
   navigator.clipboard.writeText(copyText.innerText);
@@ -183,10 +182,11 @@ async function loadFonts() {
 const TEMPLATE_LIST = [
   'home-page',
   'protocols',
+  'pathways',
   'product-category',
   'blog-page',
   'product-detail',
-  'search-results'
+  'search-results',
 ];
 
 async function decorateTemplates(main) {
@@ -444,3 +444,10 @@ async function loadPage() {
 }
 
 loadPage();
+
+
+// Optimus Config - Start
+window.OptimusConfig = {
+  organizationId: 'danahernonproduction1892f3fhz',
+  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a'
+};
