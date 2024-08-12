@@ -805,6 +805,10 @@ main .section > .recently-viewed-wrapper {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-6 {
   width: 1.5rem;
 }
