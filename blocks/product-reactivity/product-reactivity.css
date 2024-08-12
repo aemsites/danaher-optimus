@@ -36,6 +36,10 @@
   margin-bottom: 0.75rem
 }
 
+.product-reactivity-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
 .product-reactivity-wrapper :is(.mb-4) {
   margin-bottom: 1rem
 }
@@ -301,6 +305,11 @@
 .product-reactivity-wrapper :is(.border-slate-300) {
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity))
+}
+
+.product-reactivity-wrapper :is(.border-b-slate-400) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
 }
 
 .product-reactivity-wrapper :is(.bg-black) {
