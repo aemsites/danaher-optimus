@@ -14,14 +14,14 @@ function createKeyFactElement(key, value) {
     p({ class: 'text-base text-black' }, value),
   );
 }
-export function getStarRating(rating, starParent, width = 'w-7') {
+export function getStarRating(rating, starParent, size = 'size-7') {
   // eslint-disable-next-line no-plusplus
   for (let i = 1; i <= 5; i++) {
     const spanEl = span();
     if (i <= rating) {
-      spanEl.classList.add('icon', 'icon-star-rating', `${width}`, 'h-auto');
+      spanEl.classList.add('icon', 'icon-star-rating', `${size}`);
     } else {
-      spanEl.classList.add('icon', 'icon-star-rating-empty', `${width}`, 'h-auto');
+      spanEl.classList.add('icon', 'icon-star-rating-empty', `${size}`);
     }
     decorateIcons(spanEl);
     starParent.append(spanEl);
@@ -96,7 +96,7 @@ export default async function decorate(block) {
     ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
   const { title } = rawData;
   const description = rawData.description
-    ? div({ class: 'text-black text-xl font-normal' }, rawData.description) : '';
+    ? rawData.description : '';
   const reviewSummary = JSON.parse(rawData.reviewssummaryjson);
   const { aggregatedRating, numberOfReviews } = reviewSummary;
   const dataIsotype = rawData.isotype;

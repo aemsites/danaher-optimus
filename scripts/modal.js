@@ -29,10 +29,12 @@ export async function createModal(contentNodes) {
   // close dialog on clicks outside the dialog. https://stackoverflow.com/a/70593278/79461
   dialog.addEventListener('click', (event) => {
     const dialogDimensions = dialog.getBoundingClientRect();
-    if (event.clientX < dialogDimensions.left || event.clientX > dialogDimensions.right
-      || event.clientY < dialogDimensions.top || event.clientY > dialogDimensions.bottom) {
-      dialog.close();
-    }
+    if (
+      event.clientX < dialogDimensions.left
+      || event.clientX > dialogDimensions.right
+      || event.clientY < dialogDimensions.top
+      || event.clientY > dialogDimensions.bottom
+    ) dialog.close();
   });
 
   const block = buildBlock('modal', '');
@@ -78,4 +80,5 @@ export function decorateModals(element) {
       openModal(origin.href);
     }
   });
+  return element;
 }
