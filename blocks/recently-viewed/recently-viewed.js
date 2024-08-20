@@ -4,6 +4,8 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
+import { decorateProductQuickLook } from '../../scripts/product-quick-look.js';
 
 function createSliderNavigation() {
   const prevButton = div(
@@ -17,6 +19,24 @@ function createSliderNavigation() {
   decorateIcons(prevButton);
   decorateIcons(nextButton);
   return { prevButton, nextButton };
+}
+
+//decorateOverviewContainer
+ function  quickViewContainer(block) {
+  var parentDiv = block.querySelector(".slider-wrapper");
+  parentDiv.addEventListener('click', async (event) => {
+    if (event.target.closest('.slide-item')) {
+      document.querySelector('#drawer-quickLook')?.parentElement?.replaceChildren();
+      const drawerEl = await decorateDrawer({ id: 'drawer-quickLook', title: '', isBackdrop: false });
+      const selectedProduct = event.target.closest('.slide-item');
+      const recentlyViewedProducts = JSON.parse(localStorage.getItem('products')) || [];
+      const selectedObj = recentlyViewedProducts.find(obj => obj.code === selectedProduct.querySelector('.product-code').textContent);
+      const quickViewContainer = await decorateProductQuickLook(drawerEl,selectedProduct, selectedObj.slug);
+      decorateIcons(quickViewContainer);
+      block.append(quickViewContainer);
+      showDrawer('drawer-quickLook');
+    }
+  });
 }
 
 function createSlides(productsArray) {
@@ -51,8 +71,8 @@ function createSlides(productsArray) {
         ),
         div(
           { class: 'flex flex-col font-semibold' },
-          h6({ class: 'mt-4 text-xs text-[#65797c]' }, `${product.code}`),
-          p({ class: 'mb-4 mt-2 text-sm text-black-0' }, `${product.title}`),
+          h6({ class: 'product-code mt-4 text-xs text-[#65797c]' }, `${product.code}`),
+          p({ class: 'product-title mb-4 mt-2 text-sm text-black-0' }, `${product.title}`),
         ),
       ),
       div(
@@ -207,6 +227,7 @@ export default async function decorate(block) {
   const productCategory = responseData.categorytype;
   const productCode = responseData.productcode ? responseData.productcode.trim() : '';
   const productTitle = responseData.title ? responseData.title : '';
+  const productSlug = responseData.productslug ? responseData.productslug : '';
   let agrRating = null;
   let numOfReviews;
 
@@ -228,6 +249,7 @@ export default async function decorate(block) {
       title: productTitle,
       aggregatedRating: agrRating,
       numberOfReviews: numOfReviews,
+      slug: productSlug,
     });
 
     localStorage.setItem(
@@ -270,5 +292,6 @@ export default async function decorate(block) {
     sliderContainer.appendChild(dotsContainer);
 
     initializeSlider(sliderContainer, sliderWrapper, prevButton, nextButton, dotsContainer);
+    quickViewContainer(block);
   }
 }
