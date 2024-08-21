@@ -480,7 +480,7 @@ function decorateIcon(span, prefix = '', alt = '') {
 function decorateIcons(element, prefix = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, prefix);
+    if (span.children.length === 0) decorateIcon(span, prefix);
   });
 }
 
