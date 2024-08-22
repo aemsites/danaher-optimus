@@ -417,6 +417,7 @@ function allApplicationTableData(tableData, application) {
         img({
           class: getTableCSS(row[name].suitability),
           src: getReactivityStatus(row[name].suitability),
+          alt: row[name].suitability,
         }),
       );
       tablerow.appendChild(tableCell);

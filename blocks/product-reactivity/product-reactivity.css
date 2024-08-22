@@ -60,40 +60,16 @@
   inset-inline-end: 0.625rem
 }
 
-.product-reactivity-wrapper :is(.right-10) {
-  right: 2.5rem
-}
-
 .product-reactivity-wrapper :is(.right-2) {
   right: 0.5rem
-}
-
-.product-reactivity-wrapper :is(.top-10) {
-  top: 2.5rem
-}
-
-.product-reactivity-wrapper :is(.top-2) {
-  top: 0.5rem
 }
 
 .product-reactivity-wrapper :is(.right-4) {
   right: 1rem
 }
 
-.product-reactivity-wrapper :is(.top-4) {
-  top: 1rem
-}
-
 .product-reactivity-wrapper :is(.top-6) {
   top: 1.5rem
-}
-
-.product-reactivity-wrapper :is(.col-span-3) {
-  grid-column: span 3 / span 3
-}
-
-.product-reactivity-wrapper :is(.col-span-2) {
-  grid-column: span 2 / span 2
 }
 
 .product-reactivity-wrapper :is(.mx-auto) {
@@ -109,6 +85,10 @@
 .product-reactivity-wrapper :is(.my-4) {
   margin-top: 1rem;
   margin-bottom: 1rem
+}
+
+.product-reactivity-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
 }
 
 .product-reactivity-wrapper :is(.mb-4) {
@@ -127,6 +107,10 @@
   margin-inline-start: 0.5rem
 }
 
+.product-reactivity-wrapper :is(.mt-10) {
+  margin-top: 2.5rem
+}
+
 .product-reactivity-wrapper :is(.mt-2) {
   margin-top: 0.5rem
 }
@@ -139,20 +123,8 @@
   margin-top: 1.5rem
 }
 
-.product-reactivity-wrapper :is(.mt-10) {
-  margin-top: 2.5rem
-}
-
-.product-reactivity-wrapper :is(.mb-2) {
-  margin-bottom: 0.5rem
-}
-
 .product-reactivity-wrapper :is(.mt-auto) {
   margin-top: auto
-}
-
-.product-reactivity-wrapper :is(.mb-3) {
-  margin-bottom: 0.75rem
 }
 
 .product-reactivity-wrapper :is(.box-content) {
@@ -216,11 +188,6 @@
 .product-reactivity-wrapper :is(.size-full) {
   width: 100%;
   height: 100%
-}
-
-.product-reactivity-wrapper :is(.size-60) {
-  width: 15rem;
-  height: 15rem
 }
 
 .product-reactivity-wrapper :is(.h-4) {
@@ -318,10 +285,6 @@
   scroll-snap-align: start
 }
 
-.product-reactivity-wrapper :is(.auto-cols-\[33\%\]) {
-  grid-auto-columns: 33%
-}
-
 .product-reactivity-wrapper :is(.auto-cols-\[50\%\]) {
   grid-auto-columns: 50%
 }
@@ -378,10 +341,6 @@
   gap: 1.5rem
 }
 
-.product-reactivity-wrapper :is(.gap-5) {
-  gap: 1.25rem
-}
-
 .product-reactivity-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
@@ -407,17 +366,17 @@
        column-gap: 2rem
 }
 
+.product-reactivity-wrapper :is(.gap-x-9) {
+  -moz-column-gap: 2.25rem;
+       column-gap: 2.25rem
+}
+
 .product-reactivity-wrapper :is(.gap-y-2) {
   row-gap: 0.5rem
 }
 
 .product-reactivity-wrapper :is(.gap-y-6) {
   row-gap: 1.5rem
-}
-
-.product-reactivity-wrapper :is(.gap-x-9) {
-  -moz-column-gap: 2.25rem;
-       column-gap: 2.25rem
 }
 
 .product-reactivity-wrapper :is(.space-x-2 > :not([hidden]) ~ :not([hidden])) {
@@ -472,10 +431,6 @@
   border-width: 1px
 }
 
-.product-reactivity-wrapper :is(.border-2) {
-  border-width: 2px
-}
-
 .product-reactivity-wrapper :is(.border-4) {
   border-width: 4px
 }
@@ -493,6 +448,11 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.product-reactivity-wrapper :is(.border-cyan-500) {
+  --tw-border-opacity: 1;
+  border-color: rgb(6 182 212 / var(--tw-border-opacity))
+}
+
 .product-reactivity-wrapper :is(.border-slate-300) {
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity))
@@ -501,11 +461,6 @@
 .product-reactivity-wrapper :is(.border-white) {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity))
-}
-
-.product-reactivity-wrapper :is(.border-cyan-500) {
-  --tw-border-opacity: 1;
-  border-color: rgb(6 182 212 / var(--tw-border-opacity))
 }
 
 .product-reactivity-wrapper :is(.bg-black) {
@@ -530,20 +485,8 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.product-reactivity-wrapper :is(.bg-\[url\(\'\$\{link\}\'\)\]) {
-  background-image: url('${link}')
-}
-
-.product-reactivity-wrapper :is(.bg-\[url\(\'https\:\/\/content\.abcam\.com\/products\/images\/histone-h3-antibody-nuclear-marker-and-chip-grade-ab1791--western-blot-img133695\.jpg\'\)\]) {
-  background-image: url('https://content.abcam.com/products/images/histone-h3-antibody-nuclear-marker-and-chip-grade-ab1791--western-blot-img133695.jpg')
-}
-
 .product-reactivity-wrapper :is(.bg-\[length\:100\%_100\%\]) {
   background-size: 100% 100%
-}
-
-.product-reactivity-wrapper :is(.bg-\[length\:70\%_100\%\]) {
-  background-size: 70% 100%
 }
 
 .product-reactivity-wrapper :is(.bg-center) {
@@ -836,14 +779,6 @@
 
   .product-reactivity-wrapper :is(.md\:grid-cols-2) {
     grid-template-columns: repeat(2, minmax(0, 1fr))
-  }
-
-  .product-reactivity-wrapper :is(.md\:grid-cols-3) {
-    grid-template-columns: repeat(3, minmax(0, 1fr))
-  }
-
-  .product-reactivity-wrapper :is(.md\:grid-cols-5) {
-    grid-template-columns: repeat(5, minmax(0, 1fr))
   }
 
   .product-reactivity-wrapper :is(.md\:flex-row) {
