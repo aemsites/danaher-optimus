@@ -197,7 +197,13 @@ export default async function decorate(block) {
       'KO Validated': 'Knock-out (KO) validation is a robust technique used to confirm antibody specificity by testing the antibody of interest in a cell line or tissue that has been engineered to not express the target protein.',
     };
     const taggedData = Array.isArray(productTags) ? productTags.map((tag) => ({ tag, tagsdescription: highlightsDescriptions[tag] || ' ' })) : [];
-    const taggedDataElements = taggedData.map(({ tag, tagsdescription }) => createTagDescriptionElement(tag, tagsdescription));
+    const taggedDataElements = taggedData.map((item) => {
+      const { tag, tagsdescription } = item;
+      return createTagDescriptionElement(
+        tag,
+        tagsdescription,
+      );
+    });
     const taggedDataContainer = div({ class: 'tagged-data-container h-[77%] overflow-y-auto overflow-x-hidden' });
     taggedDataElements.forEach((element) => taggedDataContainer.appendChild(element));
     const drawerContent = drawerEl.querySelector('#drawer-highlights .drawer-body');
