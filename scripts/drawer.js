@@ -20,7 +20,7 @@ export async function decorateDrawer(config) {
   const drawer = div(
     {
       id: specificId,
-      class: `fixed top-0 right-0 z-40 h-screen transition-transform w-[35rem] transform-none ${specificId === 'drawer-highlights' ? 'bg-white' : 'bg-gray-100'}`,
+      class: `fixed top-0 right-0 z-40 h-screen transition-transform w-[35rem] transform-none ${specificId === 'drawer-highlights' ? 'bg-white max-[666px]:w-auto' : 'bg-gray-100'}`,
     },
     heading,
     div({ class: 'drawer-body h-full px-8 py-6 shadow-lg' }),
