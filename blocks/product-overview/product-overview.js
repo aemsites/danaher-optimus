@@ -191,9 +191,9 @@ export default async function decorate(block) {
       div({ class: 'border-b-[1px] border-[#dde1e1]' }, div({ class: 'border-b-4 border-[#ff7223] w-fit' }, 'Highlights')),
     );
     const highlightsDescriptions = {
-      'RabMAb': 'Abcam’s patented technology for the generation of high-quality rabbit monoclonal antibodies which offer superior specificity and improved antigen recognition.',
+      RabMAb: 'Abcam’s patented technology for the generation of high-quality rabbit monoclonal antibodies which offer superior specificity and improved antigen recognition.',
       'Advanced Validation': 'Abcam prides itself on higher validation standards so this product has been subjected to additional testing. Please refer to the product datasheet for more information.',
-      'Recombinant': 'Recombinant proteins and antibodies can be easily reproduced and have superior batch-to-batch consistency. Made artificially from modified DNA, the recombinant production process is both rapid and supports large batch sizes.',
+      Recombinant: 'Recombinant proteins and antibodies can be easily reproduced and have superior batch-to-batch consistency. Made artificially from modified DNA, the recombinant production process is both rapid and supports large batch sizes.',
       'KO Validated': 'Knock-out (KO) validation is a robust technique used to confirm antibody specificity by testing the antibody of interest in a cell line or tissue that has been engineered to not express the target protein.',
     };
     const taggedData = Array.isArray(productTags) ? productTags.map((tag) => ({ tag, tagsdescription: highlightsDescriptions[tag] || ' ' })) : [];
