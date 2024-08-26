@@ -1,11 +1,12 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, h6, p, h3, h5, ul, li, span,
-  a,
+  a, button,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 import { decorateModals } from '../../scripts/modal.js';
 import { toolTip } from '../../scripts/scripts.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
 
 function createKeyFactElement(key, value) {
   return div(
@@ -85,11 +86,18 @@ function getButtonAlternative(rawData, title) {
   }
   return '';
 }
-
+function createTagDescriptionElement(tag, description) {
+  return div(
+    { class: 'tag-description-item mb-4' },
+    div({ class: 'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border w-fit my-5' }, tag),
+    p({ class: 'description text-sm text-[#575757]' }, description),
+  );
+}
 export default async function decorate(block) {
   const response = await getProductResponse();
   const rawData = response?.at(0)?.raw;
   const targetJson = rawData?.targetjson;
+  const productCode = rawData.productcode;
   // Extracting alternativeNames array
   const targetJsonData = targetJson ? JSON.parse(targetJson) : [];
   const alternativeNames = targetJsonData.alternativeNames
@@ -127,12 +135,16 @@ export default async function decorate(block) {
   }
 
   block.classList.add('h-full', 'bg-white', 'col-span-7');
-  // Constructing the product tags
+  const drawerEl = await decorateDrawer({ id: 'drawer-highlights', title: 'Highlights', isBackdrop: false });
   const productTagsDiv = div({ class: 'flex flex-wrap pb-4 gap-2' });
   productTags?.forEach((item) => {
-    const productTagsButton = document.createElement('button');
-    productTagsButton.classList.add(...'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border'.split(' '));
-    productTagsButton.appendChild(span({ class: 'pt-0' }, item));
+    const productTagsButton = button(
+      {
+        class: 'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border',
+        onclick: () => showDrawer('drawer-highlights'),
+      },
+      span({ class: 'pt-0' }, item),
+    );
     productTagsDiv.appendChild(productTagsButton);
   });
 
@@ -172,6 +184,29 @@ export default async function decorate(block) {
       dataImmunogen,
       buttonAlternative,
     );
+    const pdpOverlayCon = div(
+      { class: 'bg-gray' },
+      div({ class: 'text-black text-base font-normal tracking-wide text-xl text-[#65797C]' }, `${productCode}`),
+      div({ class: 'text-black text-xl pb-4 font-bold' }, `${title}`),
+      div({ class: 'border-b-[1px] border-[#dde1e1]' }, div({ class: 'border-b-4 border-[#ff7223] w-fit' }, 'Highlights')),
+    );
+    const highlightsDescriptions = {
+      'RabMAb': 'Abcam’s patented technology for the generation of high-quality rabbit monoclonal antibodies which offer superior specificity and improved antigen recognition.',
+      'Advanced Validation': 'Abcam prides itself on higher validation standards so this product has been subjected to additional testing. Please refer to the product datasheet for more information.',
+      'Recombinant': 'Recombinant proteins and antibodies can be easily reproduced and have superior batch-to-batch consistency. Made artificially from modified DNA, the recombinant production process is both rapid and supports large batch sizes.',
+      'KO Validated': 'Knock-out (KO) validation is a robust technique used to confirm antibody specificity by testing the antibody of interest in a cell line or tissue that has been engineered to not express the target protein.',
+    };
+    const taggedData = Array.isArray(productTags) ? productTags.map((tag) => ({ tag, tagsdescription: highlightsDescriptions[tag] || ' ' })) : [];
+    const taggedDataElements = taggedData.map(({ tag, tagsdescription }) => createTagDescriptionElement(tag, tagsdescription));
+    const taggedDataContainer = div({ class: 'tagged-data-container h-[77%] overflow-y-auto overflow-x-hidden' });
+    taggedDataElements.forEach((element) => taggedDataContainer.appendChild(element));
+    const drawerContent = drawerEl.querySelector('#drawer-highlights .drawer-body');
+    if (drawerContent) {
+      drawerContent.append(pdpOverlayCon);
+      drawerContent.append(taggedDataContainer);
+    }
+    decorateIcons(drawerEl);
+    block.append(drawerEl);
     decorateIcons(overviewContainer);
     block.appendChild(overviewContainer);
   }
