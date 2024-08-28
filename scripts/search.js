@@ -23,6 +23,7 @@ export function getSelectedProductCategory() {
   return getMetadata('category-type');
 }
 
+
 export async function getFullResponse(sku, selectedProductCategory, selectedPage) {
   const url = `https://${orgId}.org.coveo.com/rest/search/v2`;
   let body = {};
@@ -132,4 +133,8 @@ export async function getProductsListResponse(page) {
     // eslint-disable-next-line no-console
     console.error(error);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> efa17c3e66bb350ae1ab9ee6d41660e7cb80f74a

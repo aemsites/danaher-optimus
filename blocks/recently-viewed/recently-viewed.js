@@ -5,7 +5,7 @@ import {
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
 import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
-import { decorateProductQuickLook } from '../../scripts/product-quick-look.js';
+import decorateProductQuickLook from '../../scripts/product-quick-look.js';
 
 function createSliderNavigation() {
   const prevButton = div(

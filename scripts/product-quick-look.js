@@ -1,106 +1,304 @@
-import { decorateIcons } from './aem.js';
-import { 
-  div, span, a,
+import {
+  div, span, a, h3, img, option, select,
+  button,
 } from './dom-builder.js';
-import { getFullResponse, getProductResponse, } from './search.js';
+import { getFullResponse } from './search.js';
 
-function decorateOverview(quickLookDrawer, isotype, hostspecies, formulation, clonality, target, immunogenObject,imagesjson) {
+let gSelectedApp = '', productCode, productTitle;
+
+function createImage(imageSrc) {
+  return img({
+    src: imageSrc,
+    alt: 'img',
+    class: 'image-sample w-full md:w-auto h-full md:h-64 object-contain m-auto',
+  })
+}
+
+function imageDescription (imageSrc, imagesJsonObj) {
+  let leftImage = document.querySelector('.left-container');
+  if (leftImage !== null) {
+    leftImage.innerHTML = '';
+    leftImage.appendChild(createImage(imageSrc));
+
+    let imageDesc = document.querySelector('.image-description');
+    const baseUrl = "https://content.abcam.com/";
+    const result = imageSrc.substring(baseUrl.length);
+    const matchingObject = imagesJsonObj.find(obj => obj.seoUrl === result);
+    console.log(matchingObject.legend);
+    imageDesc.innerHTML = '';
+    imageDesc.append(
+      div({class:'selected-image-description text-white'},matchingObject.legend)
+    )
+  }
+}
+function openPopUp(event, selectedApp, imagesJsonObj) {
+  const blackOverlay = div({ class: 'black-overlay fixed top-0 left-0 w-screen h-screen z-50 bg-black p-12 md:p-6 md:pt-4' },
+    div({class: 'flex flex-col md:flex-row'},
+      a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat(`/en-us/products/primary-antibodies/`) }, 'Full product info'),
+      button({class:'close-overlay relative flex items-center h-10 px-3 py-2.5 gap-x-2 font-semibold border border-white rounded-lg outline-none appearance-none [&_path]:fill-white hover:bg-white hover:text-black [&_path]:hover:fill-black focus-visible:bg-white focus-visible:text-black [&_path]:focus-visible:fill-black focus-visible:outline focus-visible:outline-blue-400 outline-offset-1 lg:pl-5 h-8 self-center xl:self-start'},'Exit'),
+    ),
+    div({class: 'flex flex-col md:flex-row'},
+      div({class: 'left-container flex-none md:w-3/5'}, createImage(event.target.closest('.image-sample').src)),
+      div({class:'right-container flex-none md:w-2/5'},
+        div({class:'right-top-container flex flex-col'},
+          div({class:'sku-container text-white'}, productCode),
+          div({class:'product-title text-white'}, productTitle),
+          div({class:'image-description flex flex-col h-fit text-body-small'}),
+          div({class:'overlay-dropdown'},
+            div({class:'overlay-dropdown-label'}),
+            select({class:'overlay-dropdown-filter'}),
+          ),
+          div({class:'total-image text-white'},'14 Images for All applications'),
+          div({class:'flex flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x select-none mt-2.5'},
+            div({class:'overlay-image-slider flex px-2 flex-nowrap col-gap-5 transition-transform duration-500 ease-in-out'})
+          )
+        )
+      )
+    )
+  );
   
-  const overviewSection = div ({class:'product-overview tab-item'});
-  let drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
+  blackOverlay.querySelector('.close-overlay')?.addEventListener('click',  function () {
+    document.querySelector('.black-overlay').remove();
+  });
+  blackOverlay.querySelector('.overlay-image-slider')?.addEventListener('click',  function (event) {
+    imageDescription(event.target.closest('.image-sample').src, imagesJsonObj);
+  });
+  applicationFilter(blackOverlay, imagesJsonObj, 'overlay-dropdown-filter', 'overlay-image-slider');
+  selectedApp === '' ? blackOverlay.querySelector('.overlay-dropdown-filter').value = 'All Applications' : 
+  blackOverlay.querySelector('.overlay-dropdown-filter').value = selectedApp;
+ 
+  document.body.append(blackOverlay);
+  imageDescription(event.target.closest('.image-sample').src, imagesJsonObj);
+}
+
+// Image Filter upon selecting the Application
+function filterImage(imagesFilterSliderContainer, imagesJsonObj, selectedApp, overlayImageSlider) {
+  let filteredImagesArr = [];
+  imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).innerHTML = '';
+  if (selectedApp === undefined || selectedApp === '' || selectedApp === 'All Applications') filteredImagesArr = imagesJsonObj;
+  else filteredImagesArr = imagesJsonObj.filter((obj) => obj.application === selectedApp);
   
+  gSelectedApp = selectedApp
+  console.log(filteredImagesArr);
+  filteredImagesArr.forEach((image) => {
+    const imageUrl = `https://content.abcam.com/${image.seoUrl}`;
+    imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).append(
+      div( { class: 'w-44 h-44 bg-gray-200 flex items-center justify-center m-2' }, createImage(imageUrl)),
+    );
+  });
+  if (overlayImageSlider === 'overlay-image-slider') {
+    const imageUrl = 'https://content.abcam.com/' + filteredImagesArr[0]['seoUrl']
+    imageDescription(imageUrl, filteredImagesArr);
+  }
+}
+
+// Application DropDown
+function applicationFilter(imagesFilterSliderContainer, imagesJsonObj, placement, overlayImageSlider) {
+  const applicationSet = new Set();
+  applicationSet.add('All Applications')
+  imagesJsonObj?.forEach((imgObj) => {
+    if (imgObj.application) applicationSet.add(imgObj.application);
+  });
+  filterImage(imagesFilterSliderContainer, imagesJsonObj, gSelectedApp, overlayImageSlider);
+  applicationSet.forEach((app) => {
+    
+      imagesFilterSliderContainer.querySelector(`.${placement}`).append(
+        option({ class: placement + '-application', value: app }, app),
+      );
+    
+  });
+  imagesFilterSliderContainer.querySelector(`.${placement}`).addEventListener('change', (event) => {
+    filterImage(imagesFilterSliderContainer, imagesJsonObj, event.target.value, overlayImageSlider);
+  });
+
+  if (overlayImageSlider !== 'overlay-image-slider') {
+    imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).addEventListener('click', 
+      function(event) { openPopUp(event, gSelectedApp, imagesJsonObj); 
+        event.stopImmediatePropagation();
+      });
+    }    
+}
+
+// Decorating Overview
+function decorateOverview(
+  quickLookDrawer,
+  isotype,
+  hostspecies,
+  formulation,
+  clonality,
+  target,
+  immunogenObject,
+  imagesjson,
+) {
+  const overviewSection = div({ class: 'product-overview tab-item' });
+  const drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
   const imagesJsonObj = Object.keys(imagesjson).length !== 0 ? JSON.parse(imagesjson) : [];
-  console.log(imagesJsonObj);
+  //console.log(imagesJsonObj);
   const { href } = window.location;
+  const totalImagesCount = imagesJsonObj.length;
 
-  //Overview Bottom part
-  const overviewBottomPart = div({class:'overview-Bottom-part flex flex-wrap px-8 gap-x-20 pt-4 bg-white'},
-    div({class:'w-2/5'},
-      div({class: 'pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'font-semibold'},'Isotype',
-          div({class:'font-light'},isotype),
-        )
-      )
+  // Top Section of Overview
+  const imagesFilterSliderContainer = div(
+    { class: 'images-filter-slider-container' },
+    div(
+      { class: 'images-filter-dropdown flex justify-between mb-3.5' },
+      div(
+        { class: 'flex flex-col mt-1' },
+        h3({ class: 'font-semibold text-ui-small text-stroke-opaque' }, 'Filter by'),
+        div(
+          { class: 'ml-[2px]' },
+          div(
+            { class: 'mb-2' },
+            select(
+              { class: 'filter-dropdown pl-1.5 py-1.5 border border-black rounded-3xl text-xs flex flex-row items-center' },
+            ),
+          ),
+          div({ class: 'font-semibold' }, `${totalImagesCount} Images for All applications`),
+        ),
+      ),
     ),
-    div({class:'w-2/5'},
-      div({class: 'pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'font-semibold'},'Host species',
-          div({class:'font-light'},hostspecies),
-        )
-      )
+    div(
+      { class: 'flex flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x select-none mt-2.5 relative -left-2' },
+      div(
+        { class: 'images-slider flex px-2 flex-nowrap col-gap-5' },
+        div({ class: 'gallery flex transition-transform duration-500 ease-in-out' }),
+      ),
     ),
-    div({class:'w-2/5'},
-      div({class: 'pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'font-semibold'},'Storage buffer',
-          div({class:'font-light'},formulation),
-        )
-      )
-    ),
-    div({class:'w-2/5'},
-      div({class: 'pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'font-semibold'},'Clonality',
-          div({class:'font-light'},clonality),
-        )
-      )
-    ),
-    div({class:'w-full'},
-      div({class: 'pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'font-semibold'},'Immunogen',
-          div({class:'font-light'},immunogenObject),
-        )
-      )
+    div(
+      { class: 'applications-reactive-species flex' },
+      div(
+        { class: 'flex flex-col mt-4 pr-3.5 w-1/2 text-body-xmedium text-black-0' },
+        span({ class: 'font-semibold' }, 'Applications'),
+      ),
+      div(
+        { class: 'reactive-species flex flex-col mt-4 pr-3.5 w-1/2 text-body-xmedium text-black-0' },
+        span({ class: 'font-semibold' }, 'Reactive species'),
+      ),
     ),
   );
-  const targetInfo = div({class:'flex flex-wrap px-8 pt-4 bg-white'},
-    div({class: 'w-full border-t'},
-      div({class: 'flex flex-col pr-3 my-4 text-black-0 text-body-xmedium'},
-        div({class: 'mb-3 font-semibold'},'Target data',
+  applicationFilter(imagesFilterSliderContainer, imagesJsonObj, 'filter-dropdown', 'gallery');
+
+  // Overview Bottom part
+  const overviewBottomPart = div(
+    { class: 'overview-Bottom-part flex flex-wrap px-8 gap-x-20 pt-4 bg-white' },
+    div(
+      { class: 'w-2/5' },
+      div(
+        { class: 'pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'font-semibold' },
+          'Isotype',
+          div({ class: 'font-light' }, isotype),
+        ),
+      ),
+    ),
+    div(
+      { class: 'w-2/5' },
+      div(
+        { class: 'pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'font-semibold' },
+          'Host species',
+          div({ class: 'font-light' }, hostspecies),
+        ),
+      ),
+    ),
+    div(
+      { class: 'w-2/5' },
+      div(
+        { class: 'pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'font-semibold' },
+          'Storage buffer',
+          div({ class: 'font-light' }, formulation),
+        ),
+      ),
+    ),
+    div(
+      { class: 'w-2/5' },
+      div(
+        { class: 'pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'font-semibold' },
+          'Clonality',
+          div({ class: 'font-light' }, clonality),
+        ),
+      ),
+    ),
+    div(
+      { class: 'w-full' },
+      div(
+        { class: 'pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'font-semibold' },
+          'Immunogen',
+          div({ class: 'font-light' }, immunogenObject),
+        ),
+      ),
+    ),
+  );
+  const targetInfo = div(
+    { class: 'flex flex-wrap px-8 pt-4 bg-white' },
+    div(
+      { class: 'w-full border-t' },
+      div(
+        { class: 'flex flex-col pr-3 my-4 text-black-0 text-body-xmedium' },
+        div(
+          { class: 'mb-3 font-semibold' },
+          'Target data',
           a(
             { class: 'w-fit inline-flex items-center underline text-[#378189]', href },
             target,
             span({ class: 'icon icon-share-icon ml-2' }),
           ),
-        )
-      )
-    )
-  )
+        ),
+      ),
+    ),
+  );
+  overviewSection.append(imagesFilterSliderContainer);
   overviewSection.append(overviewBottomPart);
   overviewSection.append(targetInfo);
-  if (drawerContent) drawerContent.append(overviewSection); 
+  if (drawerContent) drawerContent.append(overviewSection);
 }
 
+// Publications
 function decoratePublications(quickLookDrawer) {
-  const publicationsSection = div ({class:'product-publications tab-item hidden'}, 'Publications');
-  let drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
+  const publicationsSection = div({ class: 'product-publications tab-item hidden' }, 'Publications');
+  const drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
   if (drawerContent) drawerContent.append(publicationsSection);
 }
 
+// Rewviews and Ratings
 function decorateReviewsAndRatings(quickLookDrawer) {
-  const reviewsAndRatingsSection = div ({class:'product-reviews tab-item hidden'}, 'Ratings and Reviews');
-  let drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
+  const reviewsAndRatingsSection = div({ class: 'product-reviews tab-item hidden' }, 'Ratings and Reviews');
+  const drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
   if (drawerContent) drawerContent.append(reviewsAndRatingsSection);
 }
 
+// Tab Controller
 function toggleTabs(event, quickLookDrawer) {
   const contentSections = quickLookDrawer.querySelectorAll('.tab-item');
   const selectedTab = event.target.closest('.product-tab')?.classList[0];
-  contentSections.forEach(element => {
+  contentSections.forEach((element) => {
     if (element.classList.contains(selectedTab)) element.classList.remove('hidden');
     else element.classList.add('hidden');
   });
   const allProductTabs = quickLookDrawer.querySelectorAll('.product-tab');
-  allProductTabs.forEach(element => {
+  allProductTabs.forEach((element) => {
     if (element.classList.contains(selectedTab)) element.classList.add('active', 'border-b-8', 'border-[#ff7223]');
     else element.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
-  })
+  });
 }
 
+// Creating Tabs on Drawer
 function decorateTabs(quickLookDrawer) {
-  const tabsContainer = div({class:'tabs-container flex flex-row'},
-    div({class:'flex justify-end font-semibold md:border-none'},
-      div({class:'product-overview product-tab active border-b-8 border-[#ff7223] min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer shadow-tab-active-thin'},'Overview'),
-      div({class:'product-publications product-tab min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer'},'Publications'),
-      div({class:'product-reviews product-tab min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer'},'Reviews')
+  const tabsContainer = div(
+    { class: 'tabs-container flex flex-row' },
+    div(
+      { class: 'flex justify-end font-semibold md:border-none' },
+      div({ class: 'product-overview product-tab active border-b-8 border-[#ff7223] min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer shadow-tab-active-thin' }, 'Overview'),
+      div({ class: 'product-publications product-tab min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer' }, 'Publications'),
+      div({ class: 'product-reviews product-tab min-h-pdpTabs first-of-type:ml-0 ml-5 mr-5 pt-1 pb-1 text-black-0 whitespace-nowrap cursor-pointer' }, 'Reviews'),
     ),
   );
   tabsContainer.addEventListener('click', (event) => {
@@ -109,18 +307,21 @@ function decorateTabs(quickLookDrawer) {
   quickLookDrawer.querySelector('.drawer-header-container').append(tabsContainer);
 }
 
-export async function decorateProductQuickLook(quickLookDrawer, selectedProduct,slug) {
-  let productCode = selectedProduct.querySelector('.product-code').textContent;
-  let productTitle = selectedProduct.querySelector('.product-title').textContent;
+export default async function decorateProductQuickLook(quickLookDrawer, selectedProduct, slug) {
+  productCode = selectedProduct.querySelector('.product-code').textContent;
+  productTitle = selectedProduct.querySelector('.product-title').textContent;
   const { origin } = window.location;
-  const headerContainer = div({class:'drawer-header-container flex flex-col items-start'},
-    div({class: 'text-code z-10 flex items-end text-left border-2 border-transparent'},
-      span({class:'font-medium text-[#65797c] text-grey-20'}, productCode)
+  const headerContainer = div(
+    { class: 'drawer-header-container flex flex-col items-start' },
+    div(
+      { class: 'text-code z-10 flex items-end text-left border-2 border-transparent' },
+      span({ class: 'font-medium text-[#65797c] text-grey-20' }, productCode),
     ),
-    div({class: 'text-title z-10 flex items-end text-left border-2 border-transparent'},
-      span({class: 'font-semibold text-black-0 text-xl mt-1.5'}, productTitle)
+    div(
+      { class: 'text-title z-10 flex items-end text-left border-2 border-transparent' },
+      span({ class: 'font-semibold text-black-0 text-xl mt-1.5' }, productTitle),
     ),
-    a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat('/en-us/products/primary-antibodies/' + slug) }, 'Full product info')
+    a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat(`/en-us/products/primary-antibodies/${slug}`) }, 'Full product info'),
   );
   quickLookDrawer.querySelector('.drawer-header')?.prepend(headerContainer);
   const response = await getFullResponse(slug);
@@ -128,14 +329,20 @@ export async function decorateProductQuickLook(quickLookDrawer, selectedProduct,
     isotype = '', hostspecies = '', formulation = '', clonality = '', imagesjson = '', target = '', immunogenjson = {},
   } = response.results[0].raw;
   const immunogenObject = Object.keys(immunogenjson).length !== 0 ? JSON.parse(immunogenjson).sensitivity : '';
- 
-  //console.log(imagesjson);
-  
-  
-  //const dataImmunogen = immunogenObject.sensitivity ?  immunogenObject.sensitivity : '';
-  decorateOverview(quickLookDrawer, isotype, hostspecies, formulation, clonality, target, immunogenObject,imagesjson);
+
+  decorateOverview(
+    quickLookDrawer,
+    isotype,
+    hostspecies,
+    formulation,
+    clonality,
+    target,
+    immunogenObject,
+    imagesjson,
+  );
   decoratePublications(quickLookDrawer);
   decorateReviewsAndRatings(quickLookDrawer);
   decorateTabs(quickLookDrawer);
+  quickLookDrawer.querySelector('.gallery').addEventListener('click', openPopUp);
   return quickLookDrawer;
 }
