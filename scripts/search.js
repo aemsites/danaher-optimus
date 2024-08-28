@@ -133,8 +133,5 @@ export async function getProductsListResponse(page) {
     // eslint-disable-next-line no-console
     console.error(error);
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> efa17c3e66bb350ae1ab9ee6d41660e7cb80f74a
+
