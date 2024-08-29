@@ -4,119 +4,125 @@ import {
 } from './dom-builder.js';
 import { getFullResponse } from './search.js';
 
-let gSelectedApp = '', productCode, productTitle;
+let gSelectedApp = ''; let productCode;
+let productTitle;
 
+// To create slider images
 function createImage(imageSrc) {
   return img({
     src: imageSrc,
     alt: 'img',
     class: 'image-sample w-full md:w-auto h-full md:h-64 object-contain m-auto',
-  })
+  });
 }
 
-function imageDescription (imageSrc, imagesJsonObj) {
-  let leftImage = document.querySelector('.left-container');
-  if (leftImage !== null) {
+// To show image descriptions
+function imageDescription(imageSrc, imagesJsonObj) {
+  const leftImage = document.querySelector('.left-container');
+  if (leftImage !== undefined && leftImage !== null) {
     leftImage.innerHTML = '';
     leftImage.appendChild(createImage(imageSrc));
-
-    let imageDesc = document.querySelector('.image-description');
-    const baseUrl = "https://content.abcam.com/";
+    const imageDesc = document.querySelector('.image-description');
+    const baseUrl = 'https://content.abcam.com/';
     const result = imageSrc.substring(baseUrl.length);
-    const matchingObject = imagesJsonObj.find(obj => obj.seoUrl === result);
-    console.log(matchingObject.legend);
+    const matchingObject = imagesJsonObj.find((obj) => obj.seoUrl === result);
     imageDesc.innerHTML = '';
     imageDesc.append(
-      div({class:'selected-image-description text-white'},matchingObject.legend)
-    )
+      div({ class: 'selected-image-description text-white' }, matchingObject.legend),
+    );
   }
-}
-function openPopUp(event, selectedApp, imagesJsonObj) {
-  const blackOverlay = div({ class: 'black-overlay fixed top-0 left-0 w-screen h-screen z-50 bg-black p-12 md:p-6 md:pt-4' },
-    div({class: 'flex flex-col md:flex-row'},
-      a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat(`/en-us/products/primary-antibodies/`) }, 'Full product info'),
-      button({class:'close-overlay relative flex items-center h-10 px-3 py-2.5 gap-x-2 font-semibold border border-white rounded-lg outline-none appearance-none [&_path]:fill-white hover:bg-white hover:text-black [&_path]:hover:fill-black focus-visible:bg-white focus-visible:text-black [&_path]:focus-visible:fill-black focus-visible:outline focus-visible:outline-blue-400 outline-offset-1 lg:pl-5 h-8 self-center xl:self-start'},'Exit'),
-    ),
-    div({class: 'flex flex-col md:flex-row'},
-      div({class: 'left-container flex-none md:w-3/5'}, createImage(event.target.closest('.image-sample').src)),
-      div({class:'right-container flex-none md:w-2/5'},
-        div({class:'right-top-container flex flex-col'},
-          div({class:'sku-container text-white'}, productCode),
-          div({class:'product-title text-white'}, productTitle),
-          div({class:'image-description flex flex-col h-fit text-body-small'}),
-          div({class:'overlay-dropdown'},
-            div({class:'overlay-dropdown-label'}),
-            select({class:'overlay-dropdown-filter'}),
-          ),
-          div({class:'total-image text-white'},'14 Images for All applications'),
-          div({class:'flex flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x select-none mt-2.5'},
-            div({class:'overlay-image-slider flex px-2 flex-nowrap col-gap-5 transition-transform duration-500 ease-in-out'})
-          )
-        )
-      )
-    )
-  );
-  
-  blackOverlay.querySelector('.close-overlay')?.addEventListener('click',  function () {
-    document.querySelector('.black-overlay').remove();
-  });
-  blackOverlay.querySelector('.overlay-image-slider')?.addEventListener('click',  function (event) {
-    imageDescription(event.target.closest('.image-sample').src, imagesJsonObj);
-  });
-  applicationFilter(blackOverlay, imagesJsonObj, 'overlay-dropdown-filter', 'overlay-image-slider');
-  selectedApp === '' ? blackOverlay.querySelector('.overlay-dropdown-filter').value = 'All Applications' : 
-  blackOverlay.querySelector('.overlay-dropdown-filter').value = selectedApp;
- 
-  document.body.append(blackOverlay);
-  imageDescription(event.target.closest('.image-sample').src, imagesJsonObj);
 }
 
 // Image Filter upon selecting the Application
 function filterImage(imagesFilterSliderContainer, imagesJsonObj, selectedApp, overlayImageSlider) {
   let filteredImagesArr = [];
   imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).innerHTML = '';
+  gSelectedApp = selectedApp;
+
   if (selectedApp === undefined || selectedApp === '' || selectedApp === 'All Applications') filteredImagesArr = imagesJsonObj;
   else filteredImagesArr = imagesJsonObj.filter((obj) => obj.application === selectedApp);
-  
-  gSelectedApp = selectedApp
-  console.log(filteredImagesArr);
+
   filteredImagesArr.forEach((image) => {
     const imageUrl = `https://content.abcam.com/${image.seoUrl}`;
     imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).append(
-      div( { class: 'w-44 h-44 bg-gray-200 flex items-center justify-center m-2' }, createImage(imageUrl)),
+      div({ class: 'w-44 h-44 bg-gray-200 flex items-center justify-center m-2' }, createImage(imageUrl)),
     );
   });
+
   if (overlayImageSlider === 'overlay-image-slider') {
-    const imageUrl = 'https://content.abcam.com/' + filteredImagesArr[0]['seoUrl']
+    const imageUrl = `https://content.abcam.com/${filteredImagesArr[0].seoUrl}`;
     imageDescription(imageUrl, filteredImagesArr);
   }
 }
 
-// Application DropDown
-function applicationFilter(imagesFilterSliderContainer, imagesJsonObj, placement, overlayImageSlider) {
+// Application DropDown and Overlay
+function applicationFilter(
+  imagesFilterSliderContainer,
+  imagesJsonObj,
+  placement,
+  overlayImageSlider,
+) {
   const applicationSet = new Set();
-  applicationSet.add('All Applications')
+  applicationSet.add('All Applications');
   imagesJsonObj?.forEach((imgObj) => {
     if (imgObj.application) applicationSet.add(imgObj.application);
   });
   filterImage(imagesFilterSliderContainer, imagesJsonObj, gSelectedApp, overlayImageSlider);
   applicationSet.forEach((app) => {
-    
-      imagesFilterSliderContainer.querySelector(`.${placement}`).append(
-        option({ class: placement + '-application', value: app }, app),
-      );
-    
+    imagesFilterSliderContainer.querySelector(`.${placement}`).append(
+      option({ class: `${placement}-application`, value: app }, app),
+    );
   });
   imagesFilterSliderContainer.querySelector(`.${placement}`).addEventListener('change', (event) => {
     filterImage(imagesFilterSliderContainer, imagesJsonObj, event.target.value, overlayImageSlider);
   });
-
   if (overlayImageSlider !== 'overlay-image-slider') {
-    imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).addEventListener('click', 
-      function(event) { openPopUp(event, gSelectedApp, imagesJsonObj); 
-        event.stopImmediatePropagation();
+    imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).addEventListener('click', (event) => {
+      const blackOverlay = div(
+        { class: 'black-overlay fixed top-0 left-0 w-screen h-screen z-50 bg-black p-12 md:p-6 md:pt-4' },
+        div(
+          { class: 'flex flex-row items-center justify-center md:justify-end gap-x-96' },
+          a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat('/en-us/products/primary-antibodies/') }, 'Full product info'),
+          button({ class: 'close-overlay flex items-center h-10 px-3 py-2.5 gap-x-2 font-semibold border border-white rounded-lg outline-none' }, 'Exit'),
+        ),
+        div(
+          { class: 'flex flex-col md:flex-row' },
+          div({ class: 'left-container flex-none md:w-3/5' }, createImage(event.target.closest('.image-sample').src)),
+          div(
+            { class: 'right-container flex-none md:w-2/5' },
+            div(
+              { class: 'right-top-container flex flex-col' },
+              div({ class: 'sku-container text-white' }, productCode),
+              div({ class: 'product-title text-white' }, productTitle),
+              div({ class: 'image-description flex flex-col h-fit text-body-small' }),
+              div(
+                { class: 'overlay-dropdown' },
+                div({ class: 'overlay-dropdown-label' }),
+                select({ class: 'overlay-dropdown-filter' }),
+              ),
+              div({ class: 'total-image text-white' }, '14 Images for All applications'),
+              div(
+                { class: 'flex flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x select-none mt-2.5' },
+                div({ class: 'overlay-image-slider flex px-2 flex-nowrap col-gap-5 transition-transform duration-500 ease-in-out' }),
+              ),
+            ),
+          ),
+        ),
+      );
+      blackOverlay.querySelector('.close-overlay')?.addEventListener('click', () => {
+        document.querySelector('.black-overlay').remove();
       });
-    }    
+      blackOverlay.querySelector('.overlay-image-slider')?.addEventListener('click', (overLayImage) => {
+        imageDescription(overLayImage.target.closest('.image-sample').src, imagesJsonObj);
+      });
+      applicationFilter(blackOverlay, imagesJsonObj, 'overlay-dropdown-filter', 'overlay-image-slider');
+      if (gSelectedApp === '') blackOverlay.querySelector('.overlay-dropdown-filter').value = 'All Applications';
+      else blackOverlay.querySelector('.overlay-dropdown-filter').value = gSelectedApp;
+      document.body.append(blackOverlay);
+      imageDescription(event.target.closest('.image-sample').src, imagesJsonObj);
+      event.stopImmediatePropagation();
+    });
+  }
 }
 
 // Decorating Overview
@@ -133,7 +139,6 @@ function decorateOverview(
   const overviewSection = div({ class: 'product-overview tab-item' });
   const drawerContent = quickLookDrawer.querySelector('#drawer-quickLook .drawer-body');
   const imagesJsonObj = Object.keys(imagesjson).length !== 0 ? JSON.parse(imagesjson) : [];
-  //console.log(imagesJsonObj);
   const { href } = window.location;
   const totalImagesCount = imagesJsonObj.length;
 
@@ -329,7 +334,7 @@ export default async function decorateProductQuickLook(quickLookDrawer, selected
     isotype = '', hostspecies = '', formulation = '', clonality = '', imagesjson = '', target = '', immunogenjson = {},
   } = response.results[0].raw;
   const immunogenObject = Object.keys(immunogenjson).length !== 0 ? JSON.parse(immunogenjson).sensitivity : '';
-
+  gSelectedApp = '';
   decorateOverview(
     quickLookDrawer,
     isotype,
@@ -343,6 +348,6 @@ export default async function decorateProductQuickLook(quickLookDrawer, selected
   decoratePublications(quickLookDrawer);
   decorateReviewsAndRatings(quickLookDrawer);
   decorateTabs(quickLookDrawer);
-  quickLookDrawer.querySelector('.gallery').addEventListener('click', openPopUp);
+  quickLookDrawer.querySelector('.gallery').addEventListener('click', applicationFilter);
   return quickLookDrawer;
 }
