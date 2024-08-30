@@ -26,17 +26,15 @@ function imageDescription(imageSrc, imagesJsonObj) {
     const baseUrl = 'https://content.abcam.com/';
     const result = imageSrc.substring(baseUrl.length);
     const matchingObject = imagesJsonObj.find((obj) => obj.seoUrl === result);
-    imageDesc.innerHTML = '';
-    imageDesc.append(
-      div({ class: 'selected-image-description text-white' }, matchingObject.legend),
-    );
+    imageDesc.innerHTML = matchingObject.legend ? matchingObject.legend : '';
+    imageDesc.style.background = 'linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.95))'
   }
 }
 
 // Image Filter upon selecting the Application
-function filterImage(imagesFilterSliderContainer, imagesJsonObj, selectedApp, overlayImageSlider) {
+function filterImage(imagesFilterSliderContainer, imagesJsonObj, selectedApp, imageSlider) {
   let filteredImagesArr = [];
-  imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).innerHTML = '';
+  imagesFilterSliderContainer.querySelector(`.${imageSlider}`).innerHTML = '';
   gSelectedApp = selectedApp;
 
   if (selectedApp === undefined || selectedApp === '' || selectedApp === 'All Applications') filteredImagesArr = imagesJsonObj;
@@ -44,12 +42,12 @@ function filterImage(imagesFilterSliderContainer, imagesJsonObj, selectedApp, ov
 
   filteredImagesArr.forEach((image) => {
     const imageUrl = `https://content.abcam.com/${image.seoUrl}`;
-    imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).append(
+    imagesFilterSliderContainer.querySelector(`.${imageSlider}`).append(
       div({ class: 'w-44 h-44 bg-gray-200 flex items-center justify-center m-2' }, createImage(imageUrl)),
     );
   });
 
-  if (overlayImageSlider === 'overlay-image-slider') {
+  if (imageSlider === 'overlay-image-slider') {
     const imageUrl = `https://content.abcam.com/${filteredImagesArr[0].seoUrl}`;
     imageDescription(imageUrl, filteredImagesArr);
   }
@@ -79,11 +77,11 @@ function applicationFilter(
   if (overlayImageSlider !== 'overlay-image-slider') {
     imagesFilterSliderContainer.querySelector(`.${overlayImageSlider}`).addEventListener('click', (event) => {
       const blackOverlay = div(
-        { class: 'black-overlay fixed top-0 left-0 w-screen h-screen z-50 bg-black p-12 md:p-6 md:pt-4' },
+        { class: 'black-overlay fixed top-0 left-0 w-screen h-full overflow-y-scroll z-50 bg-black p-12 md:p-6 md:pt-4' },
         div(
-          { class: 'flex flex-row items-center justify-center md:justify-end gap-x-96' },
+          { class: 'flex flex-row items-center justify-center md:justify-end gap-x-16 md:gap-x-80' },
           a({ class: 'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2.5 my-4 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]', href: origin.concat('/en-us/products/primary-antibodies/') }, 'Full product info'),
-          button({ class: 'close-overlay flex items-center h-10 px-3 py-2.5 gap-x-2 font-semibold border border-white rounded-lg outline-none' }, 'Exit'),
+          button({ class: 'close-overlay px-5 py-1.5 font-semibold border border-white bg-black text-white rounded-3xl hover:bg-white hover:text-black' }, 'Exit'),
         ),
         div(
           { class: 'flex flex-col md:flex-row' },
@@ -92,18 +90,18 @@ function applicationFilter(
             { class: 'right-container flex-none md:w-2/5' },
             div(
               { class: 'right-top-container flex flex-col' },
-              div({ class: 'sku-container text-white' }, productCode),
-              div({ class: 'product-title text-white' }, productTitle),
-              div({ class: 'image-description flex flex-col h-fit text-body-small' }),
+              div({ class: 'sku-container text-[#65797c] text-grey-20' }, productCode),
+              div({ class: 'product-title text-white "mb-4 font-semibold text-2xl pr-7' }, productTitle),
+              div({ class: 'image-description flex flex-col h-36 overflow-y-scroll text-body-small text-white mb-5 pr-7' }),
               div(
-                { class: 'overlay-dropdown' },
-                div({ class: 'overlay-dropdown-label' }),
-                select({ class: 'overlay-dropdown-filter' }),
+                { class: 'overlay-dropdown flex flex-row gap-x-3 items-center pb-2.5' },
+                div({ class: 'overlay-dropdown-label text-white' },'Filter By'),
+                select({ class: 'overlay-dropdown-filter px-1.5 py-1.5 border border-white bg-black text-white rounded-3xl text-xs flex flex-row items-center' }),
               ),
               div({ class: 'total-image text-white' }, '14 Images for All applications'),
               div(
-                { class: 'flex flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x select-none mt-2.5' },
-                div({ class: 'overlay-image-slider flex px-2 flex-nowrap col-gap-5 transition-transform duration-500 ease-in-out' }),
+                { class: 'flex flex-nowrap overflow-x-auto h-72 scrollbar-hide touch-pan-x select-none mt-2.5' },
+                div({ class: 'overlay-image-slider flex px-2 flex-nowrap col-gap-5  transition-transform duration-500 ease-in-out' }),
               ),
             ),
           ),
