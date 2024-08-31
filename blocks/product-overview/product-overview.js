@@ -1,30 +1,20 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, h6, p, h3, h5, ul, li, span,
-  a, button,
+  a as elementA, button,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 import { decorateModals } from '../../scripts/modal.js';
 import { toolTip } from '../../scripts/scripts.js';
 import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
 
-function createColourIndicator(waveLength) {
-  if (!waveLength) {
-    return span({ class: '' });
-  }
-  const { r, g, b, a } = toRGBA(waveLength);
-  return span(
-    {
-      class: 'inline-block w-3 h-1 mb-1 mr-1',
-      style: `background-color: rgba(${r * 100}%, ${g * 100}%, ${b * 100}%, ${a});`,
-    }
-  );
-}
-
 function toRGBA(waveLength) {
-  let r, g, b, a;
-  if (isNaN(waveLength) || waveLength < 380 || waveLength > 780) {
-    r = g = b = 0;
+  let r; let g; let b; let a;
+
+  if (Number.isNaN(waveLength) || waveLength < 380 || waveLength > 780) {
+    r = 0;
+    g = 0;
+    b = 0;
     a = 0;
   } else if (waveLength >= 380 && waveLength < 440) {
     r = (-1 * (waveLength - 440)) / (440 - 380);
@@ -55,7 +45,7 @@ function toRGBA(waveLength) {
     g = 0;
     b = 0;
   }
-  // intensity is lower at the edges of the visible spectrum.
+
   if (waveLength > 780 || waveLength < 380) {
     a = 0;
   } else if (waveLength > 700) {
@@ -65,7 +55,25 @@ function toRGBA(waveLength) {
   } else {
     a = 1;
   }
-  return { r, g, b, a };
+
+  return {
+    r, g, b, a,
+  };
+}
+
+function createColourIndicator(waveLength) {
+  if (!waveLength) {
+    return span({ class: '' });
+  }
+  const {
+    r, g, b, a,
+  } = toRGBA(waveLength);
+  return span(
+    {
+      class: 'inline-block w-3 h-1 mb-1 mr-1',
+      style: `background-color: rgba(${r * 100}%, ${g * 100}%, ${b * 100}%, ${a});`,
+    },
+  );
 }
 
 function createKeyFactElement(key, value) {
@@ -96,7 +104,7 @@ function getReviewsRatings(ratings, numOfReviews) {
     const noReviewsDiv = div(
       { class: 'mt-4' },
       span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
-      a({
+      elementA({
         class: 'text-[#378189] underline font-normal', href: '#',
       }, ' Submit a review'),
     );
@@ -136,7 +144,7 @@ function getButtonAlternative(rawData, title) {
         buttonAlternative,
       ),
     ));
-    const insteadbtn = titleDiv.appendChild(a(
+    const insteadbtn = titleDiv.appendChild(elementA(
       { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
       span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
     ));
@@ -161,17 +169,18 @@ export default async function decorate(block) {
   variationsArray.forEach((products) => {
     const { product, relationship } = products;
 
-    const emission = product.conjugation && product.conjugation.emission || '';
+    const emission = (product.conjugation && product.conjugation.emission) || '';
     const colourIndicator = createColourIndicator(emission);
 
-    const conjProductsLink = a(
+    const conjProductsLink = elementA(
       { class: 'cursor-pointer hover:underline', href: product.productSlug },
       span({ class: 'text-sm lowercase text-gray-400' }, product.productCode),
       span({ class: 'px-3 py-2 text-xs rounded-xs bg-gray-200 text-slate-400 ml-2' }, relationship),
-      div({ class: 'pt-2 font-normal text-black' },
+      div(
+        { class: 'pt-2 font-normal text-black' },
         colourIndicator,
-        product.name
-      )
+        product.name,
+      ),
     );
 
     const listConj = li({ class: 'py-3 pl-8 -mt-px list-none border-t border-b' }, conjProductsLink);
@@ -191,7 +200,8 @@ export default async function decorate(block) {
       type: 'button',
       onclick: () => {
         showDrawer('conj-formulations');
-      }, class: 'text-[#378189] break-words underline'
+      },
+      class: 'text-[#378189] break-words underline',
     }, (`See all related conjugates and formulations (${conjFormulationLength})`)) : '';
 
   const { title } = rawData;
@@ -275,7 +285,7 @@ export default async function decorate(block) {
       buttonAlternative,
     );
     const conjDrawer = await decorateDrawer({ id: 'conj-formulations', title: 'Related conjugates and formulations', isBackdrop: false });
-    let conjProductsContainer = conjDrawer.querySelector('#conj-formulations .drawer-body');
+    const conjProductsContainer = conjDrawer.querySelector('#conj-formulations .drawer-body');
     if (conjProductsContainer) {
       conjProductsContainer.append(variationsContainer);
     }
@@ -285,6 +295,3 @@ export default async function decorate(block) {
     block.appendChild(overviewContainer);
   }
 }
-
-
-
