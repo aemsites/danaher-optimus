@@ -59,6 +59,10 @@
   margin-bottom: 1.5rem
 }
 
+.product-overview-wrapper :is(.-mt-px) {
+  margin-top: -1px
+}
+
 .product-overview-wrapper :is(.mb-1) {
   margin-bottom: 0.25rem
 }
@@ -73,6 +77,14 @@
 
 .product-overview-wrapper :is(.mb-6) {
   margin-bottom: 1.5rem
+}
+
+.product-overview-wrapper :is(.ml-2) {
+  margin-left: 0.5rem
+}
+
+.product-overview-wrapper :is(.mr-1) {
+  margin-right: 0.25rem
 }
 
 .product-overview-wrapper :is(.mt-2) {
@@ -91,6 +103,10 @@
   display: block
 }
 
+.product-overview-wrapper :is(.inline-block) {
+  display: inline-block
+}
+
 .product-overview-wrapper :is(.flex) {
   display: flex
 }
@@ -104,6 +120,10 @@
   height: 1.75rem
 }
 
+.product-overview-wrapper :is(.h-1) {
+  height: 0.25rem
+}
+
 .product-overview-wrapper :is(.h-44) {
   height: 11rem
 }
@@ -112,8 +132,8 @@
   height: 5px
 }
 
-.product-overview-wrapper :is(.h-\[77\%\]) {
-  height: 77%
+.product-overview-wrapper :is(.h-\[90\%\]) {
+  height: 90%
 }
 
 .product-overview-wrapper :is(.h-auto) {
@@ -122,6 +142,10 @@
 
 .product-overview-wrapper :is(.h-full) {
   height: 100%
+}
+
+.product-overview-wrapper :is(.w-3) {
+  width: 0.75rem
 }
 
 .product-overview-wrapper :is(.w-fit) {
@@ -146,6 +170,10 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none
+}
+
+.product-overview-wrapper :is(.list-none) {
+  list-style-type: none
 }
 
 .product-overview-wrapper :is(.appearance-none) {
@@ -224,12 +252,12 @@
   border-width: 1px
 }
 
-.product-overview-wrapper :is(.border-b-4) {
-  border-bottom-width: 4px
+.product-overview-wrapper :is(.border-b) {
+  border-bottom-width: 1px
 }
 
-.product-overview-wrapper :is(.border-b-\[1px\]) {
-  border-bottom-width: 1px
+.product-overview-wrapper :is(.border-t) {
+  border-top-width: 1px
 }
 
 .product-overview-wrapper :is(.border-t-\[1px\]) {
@@ -261,6 +289,11 @@
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
+.product-overview-wrapper :is(.bg-gray-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
+
 .product-overview-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
@@ -271,9 +304,24 @@
   padding-right: 0.5rem
 }
 
+.product-overview-wrapper :is(.px-3) {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
 .product-overview-wrapper :is(.py-1) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem
+}
+
+.product-overview-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.product-overview-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
 }
 
 .product-overview-wrapper :is(.py-6) {
@@ -289,6 +337,10 @@
   padding-left: 0.5rem
 }
 
+.product-overview-wrapper :is(.pl-8) {
+  padding-left: 2rem
+}
+
 .product-overview-wrapper :is(.pr-2) {
   padding-right: 0.5rem
 }
@@ -299,6 +351,10 @@
 
 .product-overview-wrapper :is(.pt-10) {
   padding-top: 2.5rem
+}
+
+.product-overview-wrapper :is(.pt-2) {
+  padding-top: 0.5rem
 }
 
 .product-overview-wrapper :is(.text-left) {
@@ -355,6 +411,10 @@
   font-weight: 100
 }
 
+.product-overview-wrapper :is(.lowercase) {
+  text-transform: lowercase
+}
+
 .product-overview-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
 }
@@ -408,12 +468,26 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
+.product-overview-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
+.product-overview-wrapper :is(.text-slate-400) {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity))
+}
+
 .product-overview-wrapper :is(.underline) {
   text-decoration-line: underline
 }
 
 .product-overview-wrapper :is(.hover\:bg-\[\#0000000d\]:hover) {
   background-color: #0000000d
+}
+
+.product-overview-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
 }
 
 @media (max-width: 799px) {
