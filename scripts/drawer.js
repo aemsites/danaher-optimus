@@ -19,7 +19,7 @@ export async function decorateDrawer(config) {
     { class: 'drawer-header flex items-center justify-between bg-white px-8 py-6 shadow-lg' },
     h5({ class: 'inline-flex items-center text-2xl text-gray-500' }, drawerTitle),
     span({ class: 'icon icon-close size-6 invert cursor-pointer', onclick: () => hideDrawer(specificId) }),
-  ) : span({ class: 'icon icon-close w-6 h-6 mt-4 mr-5 invert cursor-pointer absolute right-0 top-0', onclick: () => hideDrawer(config.id) });
+  ) : span({ class: 'icon icon-close size-6 h-6 mt-4 mr-5 invert cursor-pointer absolute right-0 top-0', onclick: () => hideDrawer(config.id) });
   const drawerBody = div({ class: 'drawer-body flex-auto overflow-scroll px-8 py-6' });
   const drawerFooter = div({ class: 'drawer-footer p-4' });
   const drawer = isDrawer ? div(
