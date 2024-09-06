@@ -312,27 +312,32 @@ export default async function decorate(block) {
     });
     const taggedDataContainer = div({ class: 'tagged-data-container' });
     taggedDataElements.forEach((element) => taggedDataContainer.appendChild(element));
-    async function renderDrawerContent() {
-      const { block: publicationDrawerBlock, drawerBody: publicationDrawerBody } = await decorateDrawer({
-        id: 'conj-formulations', title: 'Related conjugates and formulations', isBackdrop: true,
-      });
-      const { block: highlightsDrawerBlock, drawerBody: highlightsDrawerBody } = await decorateDrawer({
-        id: 'drawer-highlights', title: ' ', isBackdrop: true,
-      });
-      if (publicationDrawerBlock && publicationDrawerBody) {
-        publicationDrawerBody.append(variationsContainer);
-        decorateIcons(publicationDrawerBlock);
-        block.append(publicationDrawerBlock);
-      }
-      if (highlightsDrawerBlock && highlightsDrawerBody) {
-         highlightsDrawerBody.append(pdpOverlayCon);
-         highlightsDrawerBody.append(taggedDataContainer);
-         decorateIcons(highlightsDrawerBlock);
-         block.append(highlightsDrawerBlock);
-        }
-      }
-      renderDrawerContent();
-      decorateIcons(overviewContainer);
-      block.appendChild(overviewContainer);
+    const {
+      block: publicationDrawerBlock, drawerBody: publicationDrawerBody,
+    } = await decorateDrawer({
+      id: 'conj-formulations',
+      title: 'Related conjugates and formulations',
+      isBackdrop: true,
+    });
+    const {
+      block: highlightsDrawerBlock, drawerBody: highlightsDrawerBody,
+    } = await decorateDrawer({
+      id: 'drawer-highlights',
+      title: ' ',
+      isBackdrop: true,
+    });
+    if (publicationDrawerBlock && publicationDrawerBody) {
+      publicationDrawerBody.append(variationsContainer);
+      decorateIcons(publicationDrawerBlock);
+      block.append(publicationDrawerBlock);
     }
+    if (highlightsDrawerBlock && highlightsDrawerBody) {
+      highlightsDrawerBody.append(pdpOverlayCon);
+      highlightsDrawerBody.append(taggedDataContainer);
+      decorateIcons(highlightsDrawerBlock);
+      block.append(highlightsDrawerBlock);
+    }
+    decorateIcons(overviewContainer);
+    block.appendChild(overviewContainer);
+  }
 }
