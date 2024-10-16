@@ -18,6 +18,7 @@ function buildCoveo() {
 
         <atomic-layout-section section="facets">
           <div class="col-span-2">
+              <atomic-facet label="Category Type" field="categorytype" with-search="false" display-values-as="link" sort-criteria="occurrences"></atomic-facet>
               <atomic-automatic-facet-generator></atomic-automatic-facet-generator>
           </div>
         </atomic-layout-section>
